@@ -8,32 +8,32 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* FBS Prime Brand Colors */
+    /* Modern Clean Design Colors */
     --background: 0 0% 100%;
-    --foreground: 198 100% 15%;
+    --foreground: 205 48% 15%;
 
     --card: 0 0% 100%;
-    --card-foreground: 198 100% 15%;
+    --card-foreground: 205 48% 15%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 198 100% 15%;
+    --popover-foreground: 205 48% 15%;
 
-    /* Primary: FBS Blue */
-    --primary: 198 100% 35%;
+    /* Primary: Navy Blue */
+    --primary: 205 100% 30%;
     --primary-foreground: 0 0% 100%;
-    --primary-light: 198 100% 50%;
-    --primary-dark: 198 100% 25%;
+    --primary-light: 199 52% 54%;
+    --primary-dark: 205 100% 15%;
 
-    /* Secondary: Professional Navy */
-    --secondary: 210 30% 20%;
+    /* Secondary: Medium Blue */
+    --secondary: 205 36% 31%;
     --secondary-foreground: 0 0% 100%;
 
     /* Muted: Light Gray */
-    --muted: 210 40% 96%;
-    --muted-foreground: 215 16% 47%;
+    --muted: 205 25% 83%;
+    --muted-foreground: 205 21% 52%;
 
-    /* Accent: Success Green */
-    --accent: 142 72% 29%;
+    /* Accent: Highlight Blue */
+    --accent: 199 52% 54%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 84% 60%;
@@ -46,19 +46,21 @@ All colors MUST be HSL.
     /* Design System Tokens */
     --radius: 0.75rem;
     
-    /* Custom gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-light)));
-    --gradient-hero: linear-gradient(135deg, hsl(var(--primary-dark)), hsl(var(--primary)));
+    /* Modern gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
+    --gradient-hero: linear-gradient(120deg, hsl(var(--primary-dark)), hsl(var(--primary)));
     --gradient-section: linear-gradient(180deg, hsl(var(--background)), hsl(var(--muted)));
+    --gradient-geometric: linear-gradient(45deg, hsl(var(--accent) / 0.1), hsl(var(--primary) / 0.05));
     
-    /* Shadows */
-    --shadow-soft: 0 4px 6px -1px hsl(var(--primary) / 0.1);
-    --shadow-medium: 0 10px 15px -3px hsl(var(--primary) / 0.1);
-    --shadow-strong: 0 25px 50px -12px hsl(var(--primary) / 0.25);
+    /* Clean shadows */
+    --shadow-soft: 0 2px 8px -2px hsl(var(--primary) / 0.08);
+    --shadow-medium: 0 4px 16px -4px hsl(var(--primary) / 0.12);
+    --shadow-strong: 0 8px 32px -8px hsl(var(--primary) / 0.16);
     
-    /* Spacing */
-    --section-padding: 5rem;
-    --container-padding: 1.5rem;
+    /* Modern spacing */
+    --section-padding: 6rem;
+    --container-padding: 2rem;
+    --geometric-size: 120px;
 
     --sidebar-background: 0 0% 98%;
 
@@ -125,17 +127,41 @@ All colors MUST be HSL.
     @apply bg-background text-foreground;
   }
 
-  /* Custom gradient backgrounds */
+  /* Modern gradient backgrounds */
   .bg-gradient-primary {
-    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--primary-light)));
+    background: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--accent)));
   }
 
   .bg-gradient-hero {
-    background: linear-gradient(135deg, hsl(var(--primary-dark)), hsl(var(--primary)));
+    background: linear-gradient(120deg, hsl(var(--primary-dark)), hsl(var(--primary)));
   }
 
   .bg-gradient-section {
     background: linear-gradient(180deg, hsl(var(--background)), hsl(var(--muted)));
+  }
+
+  .bg-gradient-geometric {
+    background: linear-gradient(45deg, hsl(var(--accent) / 0.1), hsl(var(--primary) / 0.05));
+  }
+
+  /* Geometric elements */
+  .geometric-element {
+    position: absolute;
+    background: hsl(var(--accent) / 0.05);
+    border-radius: 8px;
+    transform: rotate(12deg);
+  }
+
+  .geometric-triangle {
+    width: 0;
+    height: 0;
+    border-style: solid;
+  }
+
+  .geometric-triangle-primary {
+    border-left: 60px solid transparent;
+    border-right: 60px solid transparent;
+    border-bottom: 104px solid hsl(var(--primary) / 0.08);
   }
 
   /* Custom animations */

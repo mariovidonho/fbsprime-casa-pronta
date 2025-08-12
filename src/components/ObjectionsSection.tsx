@@ -26,39 +26,45 @@ const objections = [
 
 export const ObjectionsSection = () => {
   return (
-    <section className="py-20 bg-gradient-section">
-      <div className="container mx-auto px-6">
+    <section className="py-32 bg-gradient-section relative overflow-hidden">
+      {/* Geometric elements */}
+      <div className="absolute inset-0">
+        <div className="absolute top-1/4 right-1/5 w-32 h-32 geometric-element opacity-20"></div>
+        <div className="absolute bottom-1/3 left-1/6 geometric-triangle geometric-triangle-primary opacity-25"></div>
+      </div>
+      
+      <div className="container mx-auto px-8 max-w-7xl relative z-10">
         {/* Header */}
-        <div className="text-center mb-16 animate-fade-in">
-          <h2 className="text-4xl lg:text-5xl font-bold text-secondary mb-6">
-            Seus receios são <span className="text-primary">nossos desafios</span>
+        <div className="text-center mb-24 animate-fade-in">
+          <h2 className="text-5xl lg:text-6xl font-bold text-primary mb-8 tracking-tight">
+            Seus receios são nossos desafios
           </h2>
-          <p className="text-xl text-muted-foreground max-w-4xl mx-auto">
+          <p className="text-2xl text-muted-foreground max-w-5xl mx-auto font-light leading-relaxed">
             Sabemos que decidir pela casa própria pode gerar inseguranças. Por isso, 
             criamos soluções personalizadas para cada situação, mesmo as mais complexas.
           </p>
         </div>
 
         {/* Objections Grid */}
-        <div className="grid md:grid-cols-2 gap-8 mb-16">
+        <div className="grid md:grid-cols-2 gap-12 mb-24">
           {objections.map((objection, index) => (
             <div
               key={index}
-              className="bg-card rounded-3xl p-8 shadow-soft hover:shadow-medium transition-all duration-300 animate-slide-up"
+              className="bg-white rounded-3xl p-10 shadow-soft hover:shadow-medium transition-all duration-300 animate-slide-up border border-primary/10 transform hover:-translate-y-2"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
               {/* Icon */}
-              <div className="w-16 h-16 bg-gradient-primary rounded-2xl flex items-center justify-center mb-6">
-                <objection.icon className="w-8 h-8 text-white" />
+              <div className="w-20 h-20 bg-gradient-primary rounded-2xl flex items-center justify-center mb-8">
+                <objection.icon className="w-10 h-10 text-white" />
               </div>
               
               {/* Title */}
-              <h3 className="text-xl font-bold text-secondary mb-4">
+              <h3 className="text-2xl font-bold text-primary mb-6 tracking-tight">
                 {objection.title}
               </h3>
               
               {/* Solution */}
-              <p className="text-muted-foreground leading-relaxed">
+              <p className="text-muted-foreground leading-relaxed text-lg font-light">
                 {objection.solution}
               </p>
             </div>
@@ -66,39 +72,43 @@ export const ObjectionsSection = () => {
         </div>
 
         {/* Motivation Section */}
-        <div className="bg-primary text-primary-foreground rounded-3xl p-12 text-center animate-fade-in">
-          <h3 className="text-3xl lg:text-4xl font-bold mb-6">
+        <div className="bg-gradient-primary text-white rounded-3xl p-16 text-center animate-fade-in relative overflow-hidden">
+          {/* Geometric accent */}
+          <div className="absolute top-8 left-8 w-24 h-24 border border-white/20 rounded-2xl transform -rotate-12 opacity-40"></div>
+          <div className="absolute bottom-8 right-8 w-32 h-32 border border-white/15 rounded-3xl transform rotate-6 opacity-30"></div>
+          
+          <h3 className="text-4xl lg:text-5xl font-bold mb-8 tracking-tight">
             Sua casa própria está mais próxima do que você imagina
           </h3>
           
-          <p className="text-xl opacity-90 mb-8 max-w-3xl mx-auto">
+          <p className="text-2xl opacity-90 mb-12 max-w-4xl mx-auto font-light leading-relaxed">
             Não deixe que dúvidas ou medos te impeçam de realizar este sonho. 
             Nossa especialidade é transformar "impossível" em "aprovado". 
-            <strong> Vamos conversar sobre sua situação específica?</strong>
+            <strong className="font-semibold"> Vamos conversar sobre sua situação específica?</strong>
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button variant="outline-white" size="xl">
+          <div className="flex flex-col sm:flex-row gap-6 justify-center mb-16">
+            <Button variant="outline-white" size="xl" className="border-2 shadow-xl">
               💬 Conversar pelo WhatsApp
             </Button>
-            <Button variant="cta" size="xl">
+            <Button variant="cta" size="xl" className="shadow-xl">
               📊 Fazer simulação gratuita
             </Button>
           </div>
           
           {/* Trust Elements */}
-          <div className="flex flex-wrap justify-center gap-6 mt-8 pt-8 border-t border-white/20">
-            <div className="flex items-center gap-2">
-              <Shield className="w-5 h-5" />
-              <span>Atendimento 100% Seguro</span>
+          <div className="flex flex-wrap justify-center gap-8 pt-8 border-t border-white/20">
+            <div className="flex items-center gap-3">
+              <Shield className="w-6 h-6" />
+              <span className="text-lg font-medium">Atendimento 100% Seguro</span>
             </div>
-            <div className="flex items-center gap-2">
-              <Heart className="w-5 h-5" />
-              <span>Cuidado Personalizado</span>
+            <div className="flex items-center gap-3">
+              <Heart className="w-6 h-6" />
+              <span className="text-lg font-medium">Cuidado Personalizado</span>
             </div>
-            <div className="flex items-center gap-2">
-              <Zap className="w-5 h-5" />
-              <span>Resposta Rápida</span>
+            <div className="flex items-center gap-3">
+              <Zap className="w-6 h-6" />
+              <span className="text-lg font-medium">Resposta Rápida</span>
             </div>
           </div>
         </div>

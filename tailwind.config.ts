@@ -18,6 +18,9 @@ export default {
 			}
 		},
 		extend: {
+			fontFamily: {
+				sans: ['Inter', 'system-ui', 'sans-serif'],
+			},
 			colors: {
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
@@ -126,7 +129,8 @@ export default {
 			backgroundImage: {
 				'gradient-primary': 'var(--gradient-primary)',
 				'gradient-hero': 'var(--gradient-hero)',
-				'gradient-section': 'var(--gradient-section)'
+				'gradient-section': 'var(--gradient-section)',
+				'gradient-geometric': 'var(--gradient-geometric)'
 			},
 			boxShadow: {
 				'soft': 'var(--shadow-soft)',

@@ -2,21 +2,21 @@ import { MapPin, Phone, Mail, Shield } from "lucide-react";
 
 export const Footer = () => {
   return (
-    <footer className="bg-secondary text-secondary-foreground py-16">
-      <div className="container mx-auto px-6">
-        <div className="grid md:grid-cols-4 gap-8">
+    <footer className="bg-primary text-white py-20">
+      <div className="container mx-auto px-8 max-w-7xl">
+        <div className="grid md:grid-cols-4 gap-12">
           {/* Logo and Company Info */}
-          <div className="space-y-4">
-            <div className="text-3xl font-bold text-primary-light">
+          <div className="space-y-6">
+            <div className="text-4xl font-bold text-accent">
               FBS Prime
             </div>
-            <p className="text-white/80 leading-relaxed">
+            <p className="text-white/90 leading-relaxed text-lg font-light">
               Soluções completas em crédito financeiro com atendimento humanizado 
               e transparente para Jundiaí e região.
             </p>
-            <div className="flex items-center gap-2 text-accent">
-              <Shield className="w-5 h-5" />
-              <span className="font-semibold">Atendimento 100% Transparente</span>
+            <div className="flex items-center gap-3 text-accent">
+              <Shield className="w-6 h-6" />
+              <span className="font-semibold text-lg">Atendimento 100% Transparente</span>
             </div>
           </div>
           
