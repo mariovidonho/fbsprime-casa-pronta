@@ -77,7 +77,7 @@ export const HeroSection = ({ onScrollToForm }: HeroSectionProps) => {
               />
               
               {/* Floating card */}
-              <div className="absolute -bottom-6 -left-6 bg-white rounded-2xl p-6 shadow-strong max-w-sm">
+              <div className="absolute -bottom-6 left-2 bg-white rounded-2xl p-6 shadow-strong max-w-sm">
                 <div className="flex items-center gap-4">
                   <div className="w-12 h-12 bg-accent rounded-full flex items-center justify-center">
                     <span className="text-white font-bold text-xl">✓</span>
