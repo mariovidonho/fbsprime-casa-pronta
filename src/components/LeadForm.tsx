@@ -40,26 +40,41 @@ export const LeadForm = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
-    // Simulate form submission
+    // Send form data to webhook
     try {
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      
-      toast({
-        title: "Simulação enviada com sucesso!",
-        description: "Nossa equipe entrará em contato em até 24 horas para apresentar sua proposta personalizada.",
+      const response = await fetch("https://hook.us2.make.com/6ajtjv40petejbmlxoedaludgbv027p5", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          ...formData,
+          timestamp: new Date().toISOString(),
+          source: "Landing Page FBS Prime"
+        }),
       });
-      
-      // Reset form
-      setFormData({
-        nome: "",
-        email: "",
-        telefone: "",
-        valorImovel: "",
-        valorEntrada: "",
-        valorMensal: "",
-        localizacao: ""
-      });
+
+      if (response.ok) {
+        toast({
+          title: "Simulação enviada com sucesso!",
+          description: "Nossa equipe entrará em contato em até 24 horas para apresentar sua proposta personalizada.",
+        });
+        
+        // Reset form
+        setFormData({
+          nome: "",
+          email: "",
+          telefone: "",
+          valorImovel: "",
+          valorEntrada: "",
+          valorMensal: "",
+          localizacao: ""
+        });
+      } else {
+        throw new Error("Erro no envio");
+      }
     } catch (error) {
+      console.error("Erro ao enviar formulário:", error);
       toast({
         title: "Erro ao enviar simulação",
         description: "Tente novamente ou entre em contato conosco pelo WhatsApp.",
