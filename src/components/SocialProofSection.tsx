@@ -1,5 +1,20 @@
-import { Star, Quote } from "lucide-react";
-import equipeImage from "@/assets/equipe-fbs.jpg";
+import { Star, Quote, ChevronLeft, ChevronRight } from "lucide-react";
+import useEmblaCarousel from "embla-carousel-react";
+import { useCallback } from "react";
+
+// Imagens dos clientes satisfeitos
+const clientImages = [
+  "/lovable-uploads/754bb55d-f400-493f-9108-92d7268b6f8b.png",
+  "/lovable-uploads/dd90570b-9b02-45b5-880c-1c3a2ac2cbb5.png",
+  "/lovable-uploads/84a4e474-7af6-4ccd-86e8-d67e77d9256f.png",
+  "/lovable-uploads/afb4707d-c2a0-437d-915d-4c0a73acd35d.png",
+  "/lovable-uploads/047dacc9-58aa-4d16-8b12-1be6ab64c306.png",
+  "/lovable-uploads/5de13210-5ad0-42e9-bb31-9fcc60a718af.png",
+  "/lovable-uploads/3c239818-1d35-414d-8879-cddddd9b31ea.png",
+  "/lovable-uploads/88b3d5c1-1913-4e33-8293-613aef095158.png",
+  "/lovable-uploads/ade651b9-e4bd-4d9c-9d0f-f43c9513f901.png",
+  "/lovable-uploads/4dc52da0-9fee-4985-9e31-7c7d6978bfc5.png"
+];
 
 const testimonials = [
   {
@@ -33,6 +48,15 @@ const stats = [
 ];
 
 export const SocialProofSection = () => {
+  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
+
+  const scrollPrev = useCallback(() => {
+    if (emblaApi) emblaApi.scrollPrev();
+  }, [emblaApi]);
+
+  const scrollNext = useCallback(() => {
+    if (emblaApi) emblaApi.scrollNext();
+  }, [emblaApi]);
   return (
     <section className="py-32 bg-white relative overflow-hidden">
       {/* Geometric elements */}
@@ -52,18 +76,42 @@ export const SocialProofSection = () => {
           </p>
         </div>
 
-        {/* Team Section */}
+        {/* Clients Carousel Section */}
         <div className="mb-32">
           <div className="grid lg:grid-cols-12 gap-16 items-center">
             <div className="lg:col-span-5 animate-slide-up">
               <div className="relative">
                 {/* Geometric background */}
                 <div className="absolute -inset-4 bg-gradient-geometric rounded-3xl opacity-40"></div>
-                <img
-                  src={equipeImage}
-                  alt="Equipe especializada FBS Prime"
-                  className="relative w-full h-auto rounded-3xl shadow-strong"
-                />
+                
+                {/* Carousel */}
+                <div className="relative overflow-hidden rounded-3xl shadow-strong" ref={emblaRef}>
+                  <div className="flex">
+                    {clientImages.map((image, index) => (
+                      <div key={index} className="flex-[0_0_100%] min-w-0">
+                        <img
+                          src={image}
+                          alt={`Cliente satisfeito ${index + 1} - FBS Prime`}
+                          className="w-full h-[400px] object-cover"
+                        />
+                      </div>
+                    ))}
+                  </div>
+                  
+                  {/* Navigation buttons */}
+                  <button
+                    className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white transition-all duration-200 shadow-lg"
+                    onClick={scrollPrev}
+                  >
+                    <ChevronLeft className="w-6 h-6 text-primary" />
+                  </button>
+                  <button
+                    className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white transition-all duration-200 shadow-lg"
+                    onClick={scrollNext}
+                  >
+                    <ChevronRight className="w-6 h-6 text-primary" />
+                  </button>
+                </div>
               </div>
             </div>
             
@@ -82,10 +130,10 @@ export const SocialProofSection = () => {
               
               <div className="flex flex-wrap gap-4">
                 <div className="bg-accent text-accent-foreground px-6 py-3 rounded-2xl font-semibold text-lg">
-                  ✓ Atendimento 100% Transparente
+                  ✓ Clientes Reais Satisfeitos
                 </div>
                 <div className="bg-primary text-primary-foreground px-6 py-3 rounded-2xl font-semibold text-lg">
-                  ✓ Especialistas Certificados
+                  ✓ Sonhos Realizados
                 </div>
               </div>
             </div>
