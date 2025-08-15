@@ -104,7 +104,7 @@ export const ComparisonSection = () => {
               <div className="absolute top-6 right-6 w-24 h-24 border border-white/20 rounded-2xl transform rotate-12 opacity-40"></div>
               
               <h3 className="text-3xl lg:text-4xl font-bold mb-6 tracking-tight">
-                A diferença está no cuidado com cada cliente
+                A diferença é o cuidado com cada cliente
               </h3>
               <p className="text-xl opacity-90 font-light max-w-3xl mx-auto leading-relaxed">
                 Enquanto bancos te tratam como número, nós tratamos você como família

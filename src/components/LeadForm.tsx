@@ -243,7 +243,7 @@ export const LeadForm = () => {
                       </>
                     ) : (
                       <>
-                        🎯 Quero minha simulação agora
+                        🎯 Quero minha solução agora!
                       </>
                     )}
                   </Button>

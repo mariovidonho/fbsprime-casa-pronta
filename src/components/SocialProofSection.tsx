@@ -12,14 +12,14 @@ const testimonials = [
   {
     name: "Carlos Roberto",
     profession: "Empresário",
-    content: "Após 3 negativas em bancos, a FBS Prime encontrou uma solução perfeita para meu perfil. Hoje estou realizando o sonho da casa própria!",
+    content: "Após 3 negativas em bancos, a FBS Prime encontrou uma solução perfeita para meu perfil. Depois de muito tempo encontrei a solução que eu precisava.",
     rating: 5,
     location: "Várzea Paulista - SP"
   },
   {
     name: "Marina Santos",
     profession: "Enfermeira",
-    content: "O processo foi muito mais rápido que eu imaginava. Em 30 dias estava com as chaves na mão. Super recomendo a FBS Prime!",
+    content: "O processo foi muito mais rápido do que eu imaginava e o melhor, tudo muito bem esclarecido. Super recomendo a FBS Prime!",
     rating: 5,
     location: "Cabreúva - SP"
   }
@@ -28,7 +28,7 @@ const testimonials = [
 const stats = [
   { number: "500+", label: "Famílias atendidas" },
   { number: "95%", label: "Taxa de aprovação" },
-  { number: "30", label: "Dias médios para aprovação" },
+  { number: "5", label: "anos atendendo diversas famílias com diversas soluções" },
   { number: "100%", label: "Transparência garantida" }
 ];
 
@@ -45,10 +45,10 @@ export const SocialProofSection = () => {
         {/* Header */}
         <div className="text-center mb-24 animate-fade-in">
           <h2 className="text-5xl lg:text-6xl font-bold text-primary mb-8 tracking-tight">
-            Histórias de Sucesso
+            Não acredita? <span className="text-accent">Veja você mesmo</span>
           </h2>
           <p className="text-2xl text-muted-foreground max-w-4xl mx-auto font-light leading-relaxed">
-            Conheça nossa equipe e veja o que nossos clientes falam sobre nosso atendimento
+            Conheça, uma pequena parte, de quem já encontrou uma solução para o seu bolso e para os seus sonhos!
           </p>
         </div>
 
@@ -69,17 +69,15 @@ export const SocialProofSection = () => {
             
             <div className="lg:col-span-7 space-y-8 animate-fade-in">
               <div className="bg-gradient-primary text-white rounded-3xl p-8 inline-block">
-                <h3 className="text-3xl font-bold">Equipe FBS Prime</h3>
+                <h3 className="text-3xl font-bold">Família FBS Prime</h3>
               </div>
               
               <h3 className="text-4xl lg:text-5xl font-bold text-primary tracking-tight">
-                Especialistas em soluções financeiras personalizadas
+                A nossa maior conquista: Nossos clientes
               </h3>
               
               <p className="text-xl text-muted-foreground leading-relaxed font-light">
-                Nossa equipe é formada por profissionais experientes e certificados, 
-                dedicados a encontrar a melhor solução para cada cliente. Tratamos 
-                cada pessoa como única, não como mais um número.
+                Essas são pessoas como você, tem um sonho mas com as mesmas dúvidas, incertezas, restrições e até medos. Mas a pergunta que fazemos pra você é: Se essas pessoas, com tudo isso, conseguiram, por que você não?
               </p>
               
               <div className="flex flex-wrap gap-4">

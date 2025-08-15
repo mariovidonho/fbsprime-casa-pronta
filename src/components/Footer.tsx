@@ -27,7 +27,15 @@ export const Footer = () => {
               <div className="flex items-start gap-3">
                 <Phone className="w-5 h-5 text-primary-light mt-1 flex-shrink-0" />
                 <div>
-                  <p className="text-white font-semibold">(11) 94070-0447</p>
+                  <p className="text-white font-semibold">(11) 91725-0634</p>
+                  <p className="text-white/70 text-sm">WhatsApp - Atendimento rápido</p>
+                </div>
+              </div>
+              
+              <div className="flex items-start gap-3">
+                <Phone className="w-5 h-5 text-primary-light mt-1 flex-shrink-0" />
+                <div>
+                  <p className="text-white font-semibold">(11) 97054-1325</p>
                   <p className="text-white/70 text-sm">WhatsApp - Atendimento rápido</p>
                 </div>
               </div>
@@ -35,7 +43,7 @@ export const Footer = () => {
               <div className="flex items-start gap-3">
                 <Mail className="w-5 h-5 text-primary-light mt-1 flex-shrink-0" />
                 <div>
-                  <p className="text-white">contato@fbsprime.com.br</p>
+                  <p className="text-white">fbsprime20@gmail.com</p>
                   <p className="text-white/70 text-sm">Resposta em até 4 horas</p>
                 </div>
               </div>
@@ -43,8 +51,8 @@ export const Footer = () => {
               <div className="flex items-start gap-3">
                 <MapPin className="w-5 h-5 text-primary-light mt-1 flex-shrink-0" />
                 <div>
-                  <p className="text-white">Jundiaí - SP</p>
-                  <p className="text-white/70 text-sm">Atendendo toda a região</p>
+                  <p className="text-white">Jundiaí</p>
+                  <p className="text-white/70 text-sm">R. Seike Saito, 511 - Jardim Currupira, Jundiaí - SP, 13214-077</p>
                 </div>
               </div>
             </div>

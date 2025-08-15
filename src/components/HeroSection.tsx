@@ -45,16 +45,9 @@ export const HeroSection = ({ onScrollToForm }: HeroSectionProps) => {
                 onClick={onScrollToForm}
                 className="shadow-xl hover:shadow-2xl"
               >
-                🏠 Quero minha simulação grátis agora
+                🏠 Receber minha oportunidade
               </Button>
               
-              <Button
-                size="xl"
-                variant="outline-white"
-                className="border-2"
-              >
-                📞 Falar com especialista
-              </Button>
             </div>
             
             {/* Trust indicators */}
@@ -84,13 +77,13 @@ export const HeroSection = ({ onScrollToForm }: HeroSectionProps) => {
               />
               
               {/* Floating card */}
-              <div className="absolute -bottom-8 -left-4 bg-white rounded-3xl p-8 shadow-strong max-w-sm border border-primary/10">
+              <div className="absolute -bottom-8 right-4 bg-white rounded-3xl p-8 shadow-strong max-w-sm border border-primary/10">
                 <div className="flex items-center gap-6">
                   <div className="w-16 h-16 bg-accent rounded-2xl flex items-center justify-center">
                     <span className="text-white font-bold text-2xl">✓</span>
                   </div>
                   <div>
-                    <p className="font-bold text-primary text-lg">Aprovação Garantida</p>
+                    <p className="font-bold text-primary text-lg">Processo humanizado</p>
                     <p className="text-muted-foreground font-medium">Sem burocracia excessiva</p>
                   </div>
                 </div>

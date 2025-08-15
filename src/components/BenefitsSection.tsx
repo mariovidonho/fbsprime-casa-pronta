@@ -8,13 +8,13 @@ const benefits = [
   },
   {
     icon: CheckCircle,
-    title: "Parcelas que Cabem no Bolso",
+    title: "Propostas que cabem no bolso",
     description: "Condições especiais com parcelas ajustadas à sua realidade financeira"
   },
   {
     icon: Clock,
-    title: "Aprovação Rápida",
-    description: "Processo ágil e descomplicado, sem a burocracia dos bancos tradicionais"
+    title: "Equipe dedicada",
+    description: "Você contará com um consultor focado em achar a melhor solução e tirar todas as suas dúvidas, do inicio até na compra da sua casa!"
   },
   {
     icon: Shield,

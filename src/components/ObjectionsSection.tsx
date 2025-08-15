@@ -37,7 +37,7 @@ export const ObjectionsSection = () => {
         {/* Header */}
         <div className="text-center mb-24 animate-fade-in">
           <h2 className="text-5xl lg:text-6xl font-bold text-primary mb-8 tracking-tight">
-            Seus receios são nossos desafios
+            <span className="text-accent">Sem pegadinhas.</span> Entendemos sua dor.
           </h2>
           <p className="text-2xl text-muted-foreground max-w-5xl mx-auto font-light leading-relaxed">
             Sabemos que decidir pela casa própria pode gerar inseguranças. Por isso, 
@@ -88,11 +88,8 @@ export const ObjectionsSection = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-6 justify-center mb-16">
-            <Button variant="outline-white" size="xl" className="border-2 shadow-xl">
-              💬 Conversar pelo WhatsApp
-            </Button>
             <Button variant="cta" size="xl" className="shadow-xl">
-              📊 Fazer simulação gratuita
+              📊 Receber minha oportunidade
             </Button>
           </div>
           
