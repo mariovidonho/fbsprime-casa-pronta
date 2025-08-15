@@ -13,7 +13,17 @@ const clientImages = [
   "/lovable-uploads/3c239818-1d35-414d-8879-cddddd9b31ea.png",
   "/lovable-uploads/88b3d5c1-1913-4e33-8293-613aef095158.png",
   "/lovable-uploads/ade651b9-e4bd-4d9c-9d0f-f43c9513f901.png",
-  "/lovable-uploads/4dc52da0-9fee-4985-9e31-7c7d6978bfc5.png"
+  "/lovable-uploads/4dc52da0-9fee-4985-9e31-7c7d6978bfc5.png",
+  "/lovable-uploads/d002bb59-f455-441d-b9a5-1c99881fef36.png",
+  "/lovable-uploads/78838bbd-2afc-4280-8b39-86263a0bc7a3.png",
+  "/lovable-uploads/bd548130-e83e-47ee-b215-e225318e27cd.png",
+  "/lovable-uploads/6c0d20fe-1d28-4988-9e05-8697ca2b0e49.png",
+  "/lovable-uploads/34b95437-7e72-47ea-baf2-62d44f66f12d.png",
+  "/lovable-uploads/22f7771a-aac5-4abe-8724-6a2a3a472407.png",
+  "/lovable-uploads/63787a7f-f302-411f-96cd-40dca1b566f2.png",
+  "/lovable-uploads/d1e47687-32f4-46f4-a654-6821ac5cc26a.png",
+  "/lovable-uploads/29329526-4a58-42af-91ae-f68342aac93e.png",
+  "/lovable-uploads/410c5248-d20d-4d98-a634-67db81d1580d.png"
 ];
 
 const testimonials = [
@@ -27,7 +37,7 @@ const testimonials = [
   {
     name: "Carlos Roberto",
     profession: "Empresário",
-    content: "Após 3 negativas em bancos, a FBS Prime encontrou uma solução perfeita para meu perfil. Depois de muito tempo encontrei a solução que eu precisava.",
+    content: "Após 3 negativas em bancos, a FBS Prime encontrou uma solução perfeita para meu perfil, depois de muito tempo. Achei a saída para o que eu precisava.",
     rating: 5,
     location: "Várzea Paulista - SP"
   },

@@ -41,6 +41,14 @@ export const Footer = () => {
               </div>
               
               <div className="flex items-start gap-3">
+                <Phone className="w-5 h-5 text-primary-light mt-1 flex-shrink-0" />
+                <div>
+                  <p className="text-white font-semibold">(11) 94070-0447</p>
+                  <p className="text-white/70 text-sm">WhatsApp - Atendimento rápido</p>
+                </div>
+              </div>
+              
+              <div className="flex items-start gap-3">
                 <Mail className="w-5 h-5 text-primary-light mt-1 flex-shrink-0" />
                 <div>
                   <p className="text-white">fbsprime20@gmail.com</p>
