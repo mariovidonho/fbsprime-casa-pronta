@@ -10,8 +10,6 @@ const clientImages = [
   "/lovable-uploads/afb4707d-c2a0-437d-915d-4c0a73acd35d.png",
   "/lovable-uploads/047dacc9-58aa-4d16-8b12-1be6ab64c306.png",
   "/lovable-uploads/5de13210-5ad0-42e9-bb31-9fcc60a718af.png",
-  "/lovable-uploads/3c239818-1d35-414d-8879-cddddd9b31ea.png",
-  "/lovable-uploads/88b3d5c1-1913-4e33-8293-613aef095158.png",
   "/lovable-uploads/ade651b9-e4bd-4d9c-9d0f-f43c9513f901.png",
   "/lovable-uploads/4dc52da0-9fee-4985-9e31-7c7d6978bfc5.png",
   "/lovable-uploads/b440c1ca-7164-4fa2-9cad-3d84417f6ee1.png",
@@ -23,7 +21,11 @@ const clientImages = [
   "/lovable-uploads/9139b4e3-95f8-41e7-b576-323b501c1448.png",
   "/lovable-uploads/463af361-b738-43df-8cde-b594144be27e.png",
   "/lovable-uploads/bfd8a7ba-22f1-492d-aa38-7d83142acc5b.png",
-  "/lovable-uploads/f15d34c7-0897-4b01-87c8-4d27c5780df0.png"
+  "/lovable-uploads/f15d34c7-0897-4b01-87c8-4d27c5780df0.png",
+  "/lovable-uploads/cd2e0ea7-6e9d-44d3-8673-bded5a132a12.png",
+  "/lovable-uploads/3a81e8f7-f9ac-4099-a4b4-f27c9adce3c0.png",
+  "/lovable-uploads/1b3ec91e-a1bb-4264-b0a3-98d3dd6a4fda.png",
+  "/lovable-uploads/4f0d3523-3fd9-418a-abe9-782436eba375.png"
 ];
 
 const testimonials = [
@@ -87,7 +89,7 @@ export const SocialProofSection = () => {
         </div>
 
         {/* Clients Carousel Section */}
-        <div className="mb-20 lg:mb-32">
+        <div className="mb-16 lg:mb-32">
           <div className="grid lg:grid-cols-12 gap-8 lg:gap-16 items-center">
             <div className="lg:col-span-5 animate-slide-up">
               <div className="relative">
@@ -125,24 +127,24 @@ export const SocialProofSection = () => {
               </div>
             </div>
             
-            <div className="lg:col-span-7 space-y-6 lg:space-y-8 animate-fade-in">
-              <div className="bg-gradient-primary text-white rounded-3xl p-6 lg:p-8 inline-block">
-                <h3 className="text-2xl lg:text-3xl font-bold">Família FBS Prime</h3>
+            <div className="lg:col-span-7 space-y-4 lg:space-y-8 animate-fade-in">
+              <div className="bg-gradient-primary text-white rounded-2xl lg:rounded-3xl p-4 lg:p-8 inline-block">
+                <h3 className="text-xl lg:text-3xl font-bold">Família FBS Prime</h3>
               </div>
               
-              <h3 className="text-2xl sm:text-3xl lg:text-4xl xl:text-5xl font-bold text-primary tracking-tight">
+              <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-primary tracking-tight">
                 A nossa maior conquista: Nossos clientes
               </h3>
               
-              <p className="text-base sm:text-lg lg:text-xl text-muted-foreground leading-relaxed font-light">
+              <p className="text-sm sm:text-base lg:text-xl text-muted-foreground leading-relaxed font-light">
                 Essas são pessoas como você, tem um sonho mas com as mesmas dúvidas, incertezas, restrições e até medos. Mas a pergunta que fazemos pra você é: Se essas pessoas, com tudo isso, conseguiram, por que você não?
               </p>
               
-              <div className="flex flex-wrap gap-3 lg:gap-4">
-                <div className="bg-accent text-accent-foreground px-4 lg:px-6 py-2 lg:py-3 rounded-2xl font-semibold text-sm lg:text-lg">
+              <div className="flex flex-col sm:flex-row flex-wrap gap-2 lg:gap-4">
+                <div className="bg-accent text-accent-foreground px-3 lg:px-6 py-2 lg:py-3 rounded-xl lg:rounded-2xl font-semibold text-xs sm:text-sm lg:text-lg text-center">
                   ✓ Clientes Reais Satisfeitos
                 </div>
-                <div className="bg-primary text-primary-foreground px-4 lg:px-6 py-2 lg:py-3 rounded-2xl font-semibold text-sm lg:text-lg">
+                <div className="bg-primary text-primary-foreground px-3 lg:px-6 py-2 lg:py-3 rounded-xl lg:rounded-2xl font-semibold text-xs sm:text-sm lg:text-lg text-center">
                   ✓ Sonhos Realizados
                 </div>
               </div>
@@ -151,16 +153,16 @@ export const SocialProofSection = () => {
         </div>
 
         {/* Statistics */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 lg:gap-10 mb-20 lg:mb-32">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 lg:gap-10 mb-16 lg:mb-32">
           {stats.map((stat, index) => (
             <div
               key={index}
               className="text-center animate-slide-up"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
-              <div className="bg-gradient-primary text-white rounded-3xl p-6 lg:p-10 shadow-strong hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-                <div className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-2 lg:mb-3 tracking-tight">{stat.number}</div>
-                <div className="text-sm sm:text-base lg:text-xl opacity-90 font-light">{stat.label}</div>
+              <div className="bg-gradient-primary text-white rounded-2xl lg:rounded-3xl p-4 lg:p-10 shadow-strong hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
+                <div className="text-2xl sm:text-3xl lg:text-5xl font-bold mb-1 lg:mb-3 tracking-tight">{stat.number}</div>
+                <div className="text-xs sm:text-sm lg:text-xl opacity-90 font-light leading-tight">{stat.label}</div>
               </div>
             </div>
           ))}
@@ -171,31 +173,31 @@ export const SocialProofSection = () => {
           {testimonials.map((testimonial, index) => (
             <div
               key={index}
-              className="bg-white rounded-3xl p-6 lg:p-10 shadow-soft hover:shadow-medium transition-all duration-300 animate-slide-up border border-primary/10 transform hover:-translate-y-2"
+              className="bg-white rounded-2xl lg:rounded-3xl p-6 lg:p-10 shadow-soft hover:shadow-medium transition-all duration-300 animate-slide-up border border-primary/10 transform hover:-translate-y-2"
               style={{ animationDelay: `${index * 0.2}s` }}
             >
               {/* Quote Icon */}
-              <div className="mb-6 lg:mb-8">
-                <Quote className="w-8 h-8 lg:w-10 lg:h-10 text-accent" />
+              <div className="mb-4 lg:mb-8">
+                <Quote className="w-6 h-6 lg:w-10 lg:h-10 text-accent" />
               </div>
               
               {/* Content */}
-              <p className="text-muted-foreground leading-relaxed mb-6 lg:mb-8 text-base lg:text-lg font-light">
+              <p className="text-muted-foreground leading-relaxed mb-4 lg:mb-8 text-sm lg:text-lg font-light">
                 "{testimonial.content}"
               </p>
               
               {/* Rating */}
-              <div className="flex items-center gap-1 mb-4 lg:mb-6">
+              <div className="flex items-center gap-1 mb-3 lg:mb-6">
                 {[...Array(testimonial.rating)].map((_, i) => (
-                  <Star key={i} className="w-5 h-5 lg:w-6 lg:h-6 fill-yellow-400 text-yellow-400" />
+                  <Star key={i} className="w-4 h-4 lg:w-6 lg:h-6 fill-yellow-400 text-yellow-400" />
                 ))}
               </div>
               
               {/* Author */}
-              <div className="border-t border-border pt-4 lg:pt-6">
-                <div className="font-bold text-primary text-base lg:text-lg">{testimonial.name}</div>
-                <div className="text-muted-foreground font-medium text-sm lg:text-base">{testimonial.profession}</div>
-                <div className="text-accent font-semibold text-sm lg:text-base">{testimonial.location}</div>
+              <div className="border-t border-border pt-3 lg:pt-6">
+                <div className="font-bold text-primary text-sm lg:text-lg">{testimonial.name}</div>
+                <div className="text-muted-foreground font-medium text-xs lg:text-base">{testimonial.profession}</div>
+                <div className="text-accent font-semibold text-xs lg:text-base">{testimonial.location}</div>
               </div>
             </div>
           ))}

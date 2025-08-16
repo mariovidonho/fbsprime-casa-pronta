@@ -93,14 +93,14 @@ export const LeadForm = () => {
         <div className="absolute bottom-1/3 right-1/4 w-24 h-24 bg-white/5 rounded-2xl transform -rotate-6"></div>
       </div>
       
-      <div className="container mx-auto px-8 max-w-6xl relative z-10">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-6xl relative z-10">
         <div className="max-w-5xl mx-auto">
           {/* Header */}
-          <div className="text-center mb-16 animate-fade-in">
-            <h2 className="text-5xl lg:text-6xl font-bold mb-8 tracking-tight">
+          <div className="text-center mb-12 lg:mb-16 animate-fade-in">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-6 lg:mb-8 tracking-tight">
               Simule <span className="text-accent">Gratuitamente</span>
             </h2>
-            <p className="text-2xl text-white/90 max-w-4xl mx-auto font-light leading-relaxed">
+            <p className="text-lg sm:text-xl lg:text-2xl text-white/90 max-w-4xl mx-auto font-light leading-relaxed">
               Preencha os dados abaixo e receba uma proposta personalizada 
               em até 24 horas, sem compromisso!
             </p>
@@ -108,12 +108,12 @@ export const LeadForm = () => {
 
           {/* Form Card */}
           <Card className="shadow-strong animate-slide-up border border-white/20 bg-white/95 backdrop-blur-sm">
-            <CardHeader className="text-center pb-10">
-              <div className="w-20 h-20 bg-gradient-primary rounded-3xl flex items-center justify-center mx-auto mb-6">
-                <Home className="w-10 h-10 text-white" />
+            <CardHeader className="text-center pb-8 lg:pb-10">
+              <div className="w-16 h-16 lg:w-20 lg:h-20 bg-gradient-primary rounded-3xl flex items-center justify-center mx-auto mb-4 lg:mb-6">
+                <Home className="w-8 h-8 lg:w-10 lg:h-10 text-white" />
               </div>
-              <CardTitle className="text-4xl text-primary tracking-tight">Sua Casa Própria Está Aqui</CardTitle>
-              <CardDescription className="text-xl font-light">
+              <CardTitle className="text-2xl sm:text-3xl lg:text-4xl text-primary tracking-tight">Sua Casa Própria Está Aqui</CardTitle>
+              <CardDescription className="text-lg lg:text-xl font-light">
                 Preencha as informações para receber uma simulação personalizada
               </CardDescription>
             </CardHeader>
@@ -258,29 +258,29 @@ export const LeadForm = () => {
           </Card>
           
           {/* Trust indicators below form */}
-          <div className="grid md:grid-cols-3 gap-6 mt-12">
+          <div className="grid md:grid-cols-3 gap-6 mt-8 lg:mt-12">
             <div className="text-center text-white">
-              <div className="w-12 h-12 bg-accent rounded-full flex items-center justify-center mx-auto mb-3">
-                <span className="text-xl">🔒</span>
+              <div className="w-10 h-10 lg:w-12 lg:h-12 bg-accent rounded-full flex items-center justify-center mx-auto mb-3">
+                <span className="text-lg lg:text-xl">🔒</span>
               </div>
-              <p className="font-semibold">Dados Protegidos</p>
-              <p className="text-sm opacity-80">SSL e LGPD</p>
+              <p className="font-semibold text-sm lg:text-base">Dados Protegidos</p>
+              <p className="text-xs lg:text-sm opacity-80">SSL e LGPD</p>
             </div>
             
             <div className="text-center text-white">
-              <div className="w-12 h-12 bg-accent rounded-full flex items-center justify-center mx-auto mb-3">
-                <span className="text-xl">⚡</span>
+              <div className="w-10 h-10 lg:w-12 lg:h-12 bg-accent rounded-full flex items-center justify-center mx-auto mb-3">
+                <span className="text-lg lg:text-xl">⚡</span>
               </div>
-              <p className="font-semibold">Resposta Rápida</p>
-              <p className="text-sm opacity-80">Até 24 horas</p>
+              <p className="font-semibold text-sm lg:text-base">Resposta Rápida</p>
+              <p className="text-xs lg:text-sm opacity-80">Até 24 horas</p>
             </div>
             
             <div className="text-center text-white">
-              <div className="w-12 h-12 bg-accent rounded-full flex items-center justify-center mx-auto mb-3">
-                <span className="text-xl">🎯</span>
+              <div className="w-10 h-10 lg:w-12 lg:h-12 bg-accent rounded-full flex items-center justify-center mx-auto mb-3">
+                <span className="text-lg lg:text-xl">🎯</span>
               </div>
-              <p className="font-semibold">100% Personalizado</p>
-              <p className="text-sm opacity-80">Solução sob medida</p>
+              <p className="font-semibold text-sm lg:text-base">100% Personalizado</p>
+              <p className="text-xs lg:text-sm opacity-80">Solução sob medida</p>
             </div>
           </div>
         </div>

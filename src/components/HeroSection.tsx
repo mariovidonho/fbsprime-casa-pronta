@@ -76,15 +76,15 @@ export const HeroSection = ({ onScrollToForm }: HeroSectionProps) => {
                 className="relative w-full h-auto rounded-2xl shadow-strong animate-float"
               />
               
-              {/* Floating card */}
-              <div className="absolute -bottom-6 -right-6 lg:-bottom-8 lg:-right-8 bg-white rounded-3xl p-6 lg:p-8 shadow-strong max-w-xs lg:max-w-sm border border-primary/10">
-                <div className="flex items-center gap-4 lg:gap-6">
-                  <div className="w-12 h-12 lg:w-16 lg:h-16 bg-accent rounded-2xl flex items-center justify-center flex-shrink-0">
-                    <span className="text-white font-bold text-xl lg:text-2xl">✓</span>
+              {/* Floating card - repositioned to avoid overlap */}
+              <div className="absolute -bottom-8 left-4 lg:-bottom-12 lg:left-8 bg-white rounded-3xl p-4 lg:p-6 shadow-strong max-w-xs border border-primary/10">
+                <div className="flex items-center gap-3 lg:gap-4">
+                  <div className="w-10 h-10 lg:w-12 lg:h-12 bg-accent rounded-xl flex items-center justify-center flex-shrink-0">
+                    <span className="text-white font-bold text-lg lg:text-xl">✓</span>
                   </div>
                   <div>
-                    <p className="font-bold text-primary text-base lg:text-lg">Processo humanizado</p>
-                    <p className="text-muted-foreground font-medium text-sm lg:text-base">Sem burocracia excessiva</p>
+                    <p className="font-bold text-primary text-sm lg:text-base">Processo humanizado</p>
+                    <p className="text-muted-foreground font-medium text-xs lg:text-sm">Sem burocracia excessiva</p>
                   </div>
                 </div>
               </div>
