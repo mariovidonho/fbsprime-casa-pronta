@@ -16,34 +16,34 @@ export const HeroSection = ({ onScrollToForm }: HeroSectionProps) => {
         <div className="absolute bottom-1/4 left-1/3 w-16 h-16 bg-accent/10 rounded-lg transform rotate-45"></div>
       </div>
       
-      <div className="container mx-auto px-8 relative z-10 max-w-7xl">
-        <div className="grid lg:grid-cols-12 gap-16 items-center min-h-[80vh]">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 max-w-7xl">
+        <div className="grid lg:grid-cols-12 gap-8 lg:gap-16 items-center min-h-[80vh]">
           {/* Content */}
-          <div className="lg:col-span-7 space-y-10 animate-fade-in py-20">
+          <div className="lg:col-span-7 space-y-6 lg:space-y-10 animate-fade-in py-10 lg:py-20">
             {/* Selo de destaque */}
-            <div className="inline-block bg-white/15 backdrop-blur-sm border border-white/20 rounded-2xl px-8 py-4">
-              <span className="text-white font-medium text-lg">
+            <div className="inline-block bg-white/15 backdrop-blur-sm border border-white/20 rounded-2xl px-4 sm:px-6 lg:px-8 py-3 lg:py-4">
+              <span className="text-white font-medium text-sm sm:text-base lg:text-lg">
                 ✨ Atendimento Exclusivo para Jundiaí e Região
               </span>
             </div>
             
-            <h1 className="text-5xl lg:text-7xl font-bold text-white leading-[1.1] tracking-tight">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-white leading-[1.1] tracking-tight">
               Realize o sonho da sua{" "}
               <span className="text-accent">casa própria</span>{" "}
               com entradas reduzidas
             </h1>
             
-            <p className="text-xl lg:text-2xl text-white/90 leading-relaxed max-w-2xl font-light">
+            <p className="text-lg sm:text-xl lg:text-2xl text-white/90 leading-relaxed max-w-2xl font-light">
               Chega de esperar! Temos condições exclusivas para você conquistar sua casa 
               sem pesar no orçamento. <strong className="font-semibold">Parcelas que cabem no seu bolso.</strong>
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-6 pt-4">
+            <div className="flex flex-col sm:flex-row gap-4 lg:gap-6 pt-2 lg:pt-4">
               <Button
                 size="xl"
                 variant="cta"
                 onClick={onScrollToForm}
-                className="shadow-xl hover:shadow-2xl"
+                className="shadow-xl hover:shadow-2xl w-full sm:w-auto"
               >
                 🏠 Receber minha oportunidade
               </Button>
@@ -51,15 +51,15 @@ export const HeroSection = ({ onScrollToForm }: HeroSectionProps) => {
             </div>
             
             {/* Trust indicators */}
-            <div className="flex items-center gap-8 pt-12">
-              <div className="flex -space-x-3">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-8 pt-8 lg:pt-12">
+              <div className="flex -space-x-2 sm:-space-x-3">
                 {[1, 2, 3, 4].map((i) => (
-                  <div key={i} className="w-12 h-12 rounded-full bg-white/20 border-3 border-white backdrop-blur-sm"></div>
+                  <div key={i} className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/20 border-2 sm:border-3 border-white backdrop-blur-sm"></div>
                 ))}
               </div>
               <div className="text-white">
-                <p className="font-semibold text-lg">+500 famílias realizaram o sonho</p>
-                <p className="text-base opacity-90 font-light">da casa própria conosco</p>
+                <p className="font-semibold text-base lg:text-lg">+500 famílias realizaram o sonho</p>
+                <p className="text-sm lg:text-base opacity-90 font-light">da casa própria conosco</p>
               </div>
             </div>
           </div>
@@ -77,14 +77,14 @@ export const HeroSection = ({ onScrollToForm }: HeroSectionProps) => {
               />
               
               {/* Floating card */}
-              <div className="absolute -bottom-8 -left-4 bg-white rounded-3xl p-8 shadow-strong max-w-sm border border-primary/10">
-                <div className="flex items-center gap-6">
-                  <div className="w-16 h-16 bg-accent rounded-2xl flex items-center justify-center">
-                    <span className="text-white font-bold text-2xl">✓</span>
+              <div className="absolute -bottom-6 -right-6 lg:-bottom-8 lg:-right-8 bg-white rounded-3xl p-6 lg:p-8 shadow-strong max-w-xs lg:max-w-sm border border-primary/10">
+                <div className="flex items-center gap-4 lg:gap-6">
+                  <div className="w-12 h-12 lg:w-16 lg:h-16 bg-accent rounded-2xl flex items-center justify-center flex-shrink-0">
+                    <span className="text-white font-bold text-xl lg:text-2xl">✓</span>
                   </div>
                   <div>
-                    <p className="font-bold text-primary text-lg">Processo humanizado</p>
-                    <p className="text-muted-foreground font-medium">Sem burocracia excessiva</p>
+                    <p className="font-bold text-primary text-base lg:text-lg">Processo humanizado</p>
+                    <p className="text-muted-foreground font-medium text-sm lg:text-base">Sem burocracia excessiva</p>
                   </div>
                 </div>
               </div>
