@@ -23,7 +23,6 @@ const clientImages = [
   "/lovable-uploads/f15d34c7-0897-4b01-87c8-4d27c5780df0.png",
   "/lovable-uploads/cd2e0ea7-6e9d-44d3-8673-bded5a132a12.png",
   "/lovable-uploads/3a81e8f7-f9ac-4099-a4b4-f27c9adce3c0.png",
-  "/lovable-uploads/1b3ec91e-a1bb-4264-b0a3-98d3dd6a4fda.png",
   "/lovable-uploads/4f0d3523-3fd9-418a-abe9-782436eba375.png"
 ];
 

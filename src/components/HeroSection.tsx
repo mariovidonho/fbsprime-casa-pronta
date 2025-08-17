@@ -16,50 +16,50 @@ export const HeroSection = ({ onScrollToForm }: HeroSectionProps) => {
         <div className="absolute bottom-1/4 left-1/3 w-16 h-16 bg-accent/10 rounded-lg transform rotate-45"></div>
       </div>
       
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10 max-w-7xl">
-        <div className="grid lg:grid-cols-12 gap-8 lg:gap-16 items-center min-h-[80vh]">
+      <div className="container mx-auto px-2 sm:px-6 lg:px-8 relative z-10 max-w-7xl">
+        <div className="grid lg:grid-cols-12 gap-6 sm:gap-8 lg:gap-16 items-center min-h-[80vh]">
           {/* Content */}
-          <div className="lg:col-span-7 space-y-6 lg:space-y-10 animate-fade-in py-10 lg:py-20">
+          <div className="lg:col-span-7 space-y-4 sm:space-y-6 lg:space-y-10 animate-fade-in py-8 sm:py-10 lg:py-20">
             {/* Selo de destaque */}
-            <div className="inline-block bg-white/15 backdrop-blur-sm border border-white/20 rounded-2xl px-4 sm:px-6 lg:px-8 py-3 lg:py-4">
-              <span className="text-white font-medium text-sm sm:text-base lg:text-lg">
+            <div className="inline-block bg-white/15 backdrop-blur-sm border border-white/20 rounded-2xl px-3 sm:px-6 lg:px-8 py-2 sm:py-3 lg:py-4 mx-2 sm:mx-0">
+              <span className="text-white font-medium text-xs sm:text-base lg:text-lg">
                 ✨ Atendimento Exclusivo para Jundiaí e Região
               </span>
             </div>
             
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-white leading-[1.1] tracking-tight">
+            <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-7xl font-bold text-white leading-[1.2] sm:leading-[1.1] tracking-tight px-2 sm:px-0">
               Realize o sonho da sua{" "}
               <span className="text-accent">casa própria</span>{" "}
               com entradas reduzidas
             </h1>
             
-            <p className="text-lg sm:text-xl lg:text-2xl text-white/90 leading-relaxed max-w-2xl font-light">
+            <p className="text-base sm:text-xl lg:text-2xl text-white/90 leading-[1.6] sm:leading-relaxed max-w-2xl font-light px-2 sm:px-0">
               Chega de esperar! Temos condições exclusivas para você conquistar sua casa 
               sem pesar no orçamento. <strong className="font-semibold">Parcelas que cabem no seu bolso.</strong>
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-4 lg:gap-6 pt-2 lg:pt-4 items-center justify-center sm:justify-start">
+            <div className="flex flex-col sm:flex-row gap-4 lg:gap-6 pt-4 lg:pt-4 items-center justify-center sm:justify-start px-2 sm:px-0">
               <Button
                 size="xl"
                 variant="cta"
                 onClick={onScrollToForm}
-                className="shadow-xl hover:shadow-2xl w-full sm:w-auto px-6 py-4 text-center"
+                className="shadow-xl hover:shadow-2xl w-full sm:w-auto px-4 py-3 text-center text-sm sm:text-base"
               >
-                🏠 Quero minha simulação grátis agora
+                🏠 Simular grátis agora!
               </Button>
               
             </div>
             
             {/* Trust indicators */}
-            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-8 pt-8 lg:pt-12">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-4 sm:gap-8 pt-6 sm:pt-8 lg:pt-12 px-2 sm:px-0">
               <div className="flex -space-x-2 sm:-space-x-3">
                 {[1, 2, 3, 4].map((i) => (
-                  <div key={i} className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white/20 border-2 sm:border-3 border-white backdrop-blur-sm"></div>
+                  <div key={i} className="w-8 h-8 sm:w-12 sm:h-12 rounded-full bg-white/20 border-2 sm:border-3 border-white backdrop-blur-sm"></div>
                 ))}
               </div>
               <div className="text-white">
-                <p className="font-semibold text-base lg:text-lg">+500 famílias realizaram o sonho</p>
-                <p className="text-sm lg:text-base opacity-90 font-light">da casa própria conosco</p>
+                <p className="font-semibold text-sm sm:text-base lg:text-lg">+500 famílias realizaram o sonho</p>
+                <p className="text-xs sm:text-sm lg:text-base opacity-90 font-light">da casa própria conosco</p>
               </div>
             </div>
           </div>
@@ -77,14 +77,14 @@ export const HeroSection = ({ onScrollToForm }: HeroSectionProps) => {
               />
               
               {/* Floating card - repositioned to avoid overlap */}
-              <div className="absolute -bottom-6 left-2 sm:-bottom-8 sm:left-4 lg:-bottom-12 lg:left-8 bg-white rounded-3xl p-3 sm:p-4 lg:p-6 shadow-strong max-w-[280px] sm:max-w-xs border border-primary/10">
-                <div className="flex items-center gap-3 lg:gap-4">
-                  <div className="w-10 h-10 lg:w-12 lg:h-12 bg-accent rounded-xl flex items-center justify-center flex-shrink-0">
-                    <span className="text-white font-bold text-lg lg:text-xl">✓</span>
+              <div className="absolute -bottom-4 left-1 sm:-bottom-8 sm:left-4 lg:-bottom-12 lg:left-8 bg-white rounded-2xl sm:rounded-3xl p-2 sm:p-4 lg:p-6 shadow-strong max-w-[200px] sm:max-w-xs border border-primary/10">
+                <div className="flex items-center gap-2 sm:gap-3 lg:gap-4">
+                  <div className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 bg-accent rounded-lg sm:rounded-xl flex items-center justify-center flex-shrink-0">
+                    <span className="text-white font-bold text-sm sm:text-lg lg:text-xl">✓</span>
                   </div>
                   <div>
-                    <p className="font-bold text-primary text-sm lg:text-base">Processo humanizado</p>
-                    <p className="text-muted-foreground font-medium text-xs lg:text-sm">Sem burocracia excessiva</p>
+                    <p className="font-bold text-primary text-xs sm:text-sm lg:text-base">Processo humanizado</p>
+                    <p className="text-muted-foreground font-medium text-[10px] sm:text-xs lg:text-sm">Sem burocracia excessiva</p>
                   </div>
                 </div>
               </div>
