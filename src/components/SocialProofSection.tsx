@@ -9,7 +9,6 @@ const clientImages = [
   "/lovable-uploads/84a4e474-7af6-4ccd-86e8-d67e77d9256f.png",
   "/lovable-uploads/afb4707d-c2a0-437d-915d-4c0a73acd35d.png",
   "/lovable-uploads/047dacc9-58aa-4d16-8b12-1be6ab64c306.png",
-  "/lovable-uploads/5de13210-5ad0-42e9-bb31-9fcc60a718af.png",
   "/lovable-uploads/ade651b9-e4bd-4d9c-9d0f-f43c9513f901.png",
   "/lovable-uploads/4dc52da0-9fee-4985-9e31-7c7d6978bfc5.png",
   "/lovable-uploads/b440c1ca-7164-4fa2-9cad-3d84417f6ee1.png",
@@ -84,7 +83,7 @@ export const SocialProofSection = () => {
             Não acredita? <span className="text-accent">Veja você mesmo</span>
           </h2>
           <p className="text-lg sm:text-xl lg:text-2xl text-muted-foreground max-w-4xl mx-auto font-light leading-relaxed">
-            Conheça, uma pequena parte, de quem já encontrou uma solução para o seu bolso e para os seus sonhos!
+            Conheça, uma pequena parte, de quem já encontrou uma solução para o seu sonho e para o seu bolso
           </p>
         </div>
 

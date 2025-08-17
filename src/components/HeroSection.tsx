@@ -38,14 +38,14 @@ export const HeroSection = ({ onScrollToForm }: HeroSectionProps) => {
               sem pesar no orçamento. <strong className="font-semibold">Parcelas que cabem no seu bolso.</strong>
             </p>
             
-            <div className="flex flex-col sm:flex-row gap-4 lg:gap-6 pt-2 lg:pt-4">
+            <div className="flex flex-col sm:flex-row gap-4 lg:gap-6 pt-2 lg:pt-4 items-center justify-center sm:justify-start">
               <Button
                 size="xl"
                 variant="cta"
                 onClick={onScrollToForm}
-                className="shadow-xl hover:shadow-2xl w-full sm:w-auto"
+                className="shadow-xl hover:shadow-2xl w-full sm:w-auto px-6 py-4 text-center"
               >
-                🏠 Receber minha oportunidade
+                🏠 Quero minha simulação grátis agora
               </Button>
               
             </div>
@@ -77,7 +77,7 @@ export const HeroSection = ({ onScrollToForm }: HeroSectionProps) => {
               />
               
               {/* Floating card - repositioned to avoid overlap */}
-              <div className="absolute -bottom-8 left-4 lg:-bottom-12 lg:left-8 bg-white rounded-3xl p-4 lg:p-6 shadow-strong max-w-xs border border-primary/10">
+              <div className="absolute -bottom-6 left-2 sm:-bottom-8 sm:left-4 lg:-bottom-12 lg:left-8 bg-white rounded-3xl p-3 sm:p-4 lg:p-6 shadow-strong max-w-[280px] sm:max-w-xs border border-primary/10">
                 <div className="flex items-center gap-3 lg:gap-4">
                   <div className="w-10 h-10 lg:w-12 lg:h-12 bg-accent rounded-xl flex items-center justify-center flex-shrink-0">
                     <span className="text-white font-bold text-lg lg:text-xl">✓</span>

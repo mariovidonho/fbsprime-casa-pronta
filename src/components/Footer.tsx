@@ -23,28 +23,38 @@ export const Footer = () => {
           {/* Contact Info */}
           <div>
             <h3 className="text-xl font-bold text-white mb-6">Contato</h3>
-            <div className="space-y-4">
-              <div className="flex items-start gap-3">
-                <Phone className="w-5 h-5 text-primary-light mt-1 flex-shrink-0" />
-                <div>
-                  <p className="text-white font-semibold">(11) 91725-0634</p>
-                  <p className="text-white/70 text-sm">WhatsApp - Atendimento rápido</p>
+            <div className="space-y-6">
+              {/* Atendimento e pós-venda */}
+              <div>
+                <h4 className="text-lg font-semibold text-accent mb-3">Atendimento e pós-venda</h4>
+                <div className="space-y-3">
+                  <div className="flex items-start gap-3">
+                    <Phone className="w-5 h-5 text-primary-light mt-1 flex-shrink-0" />
+                    <div>
+                      <p className="text-white font-semibold">(11) 91725-0634</p>
+                      <p className="text-white/70 text-sm">WhatsApp - Atendimento rápido</p>
+                    </div>
+                  </div>
+                  
+                  <div className="flex items-start gap-3">
+                    <Phone className="w-5 h-5 text-primary-light mt-1 flex-shrink-0" />
+                    <div>
+                      <p className="text-white font-semibold">(11) 97054-1325</p>
+                      <p className="text-white/70 text-sm">WhatsApp - Atendimento rápido</p>
+                    </div>
+                  </div>
                 </div>
               </div>
               
-              <div className="flex items-start gap-3">
-                <Phone className="w-5 h-5 text-primary-light mt-1 flex-shrink-0" />
-                <div>
-                  <p className="text-white font-semibold">(11) 97054-1325</p>
-                  <p className="text-white/70 text-sm">WhatsApp - Atendimento rápido</p>
-                </div>
-              </div>
-              
-              <div className="flex items-start gap-3">
-                <Phone className="w-5 h-5 text-primary-light mt-1 flex-shrink-0" />
-                <div>
-                  <p className="text-white font-semibold">(11) 94070-0447</p>
-                  <p className="text-white/70 text-sm">WhatsApp - Atendimento rápido</p>
+              {/* Atendimento comercial */}
+              <div>
+                <h4 className="text-lg font-semibold text-accent mb-3">Atendimento comercial</h4>
+                <div className="flex items-start gap-3">
+                  <Phone className="w-5 h-5 text-primary-light mt-1 flex-shrink-0" />
+                  <div>
+                    <p className="text-white font-semibold">(11) 94070-0447</p>
+                    <p className="text-white/70 text-sm">WhatsApp - Atendimento rápido</p>
+                  </div>
                 </div>
               </div>
               
@@ -72,6 +82,15 @@ export const Footer = () => {
             <ul className="space-y-3">
               <li className="text-white/80 hover:text-white transition-colors cursor-pointer">
                 ✓ Financiamento Imobiliário
+              </li>
+              <li className="text-white/80 hover:text-white transition-colors cursor-pointer">
+                ✓ Projeção de financiamento bancário
+              </li>
+              <li className="text-white/80 hover:text-white transition-colors cursor-pointer">
+                ✓ Consórcio imobiliário
+              </li>
+              <li className="text-white/80 hover:text-white transition-colors cursor-pointer">
+                ✓ Carta de crédito contemplada
               </li>
               <li className="text-white/80 hover:text-white transition-colors cursor-pointer">
                 ✓ Crédito com Garantia
