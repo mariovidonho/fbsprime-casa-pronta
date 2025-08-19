@@ -88,7 +88,7 @@ export const ObjectionsSection = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 lg:gap-6 justify-center mb-12 lg:mb-16">
-            <Button variant="cta" size="xl" className="shadow-xl w-full sm:w-auto">
+            <Button variant="cta" size="xl" className="shadow-xl w-full sm:w-auto px-6 sm:px-8 py-4 sm:py-4 text-sm sm:text-base">
               📊 Receber minha oportunidade
             </Button>
           </div>

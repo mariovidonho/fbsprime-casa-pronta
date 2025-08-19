@@ -77,7 +77,7 @@ export const HeroSection = ({ onScrollToForm }: HeroSectionProps) => {
               />
               
               {/* Floating card - repositioned to avoid overlap */}
-              <div className="absolute -bottom-4 left-1 sm:-bottom-8 sm:left-4 lg:-bottom-12 lg:left-8 bg-white rounded-2xl sm:rounded-3xl p-2 sm:p-4 lg:p-6 shadow-strong max-w-[200px] sm:max-w-xs border border-primary/10">
+              <div className="absolute -bottom-2 left-1 sm:-bottom-8 sm:left-4 lg:-bottom-12 lg:left-8 bg-white rounded-2xl sm:rounded-3xl p-2 sm:p-4 lg:p-6 shadow-strong max-w-[180px] sm:max-w-xs border border-primary/10">
                 <div className="flex items-center gap-2 sm:gap-3 lg:gap-4">
                   <div className="w-8 h-8 sm:w-10 sm:h-10 lg:w-12 lg:h-12 bg-accent rounded-lg sm:rounded-xl flex items-center justify-center flex-shrink-0">
                     <span className="text-white font-bold text-sm sm:text-lg lg:text-xl">✓</span>
