@@ -5,12 +5,12 @@ import { useCallback } from "react";
 // Imagens dos clientes satisfeitos
 const clientImages = [
   "/lovable-uploads/754bb55d-f400-493f-9108-92d7268b6f8b.png",
-  "/lovable-uploads/dd90570b-9b02-45b5-880c-1c3a2ac2cbb5.png",
+  "/lovable-uploads/Imagem 23.jpeg",
   "/lovable-uploads/84a4e474-7af6-4ccd-86e8-d67e77d9256f.png",
-  "/lovable-uploads/afb4707d-c2a0-437d-915d-4c0a73acd35d.png",
+  "/lovable-uploads/Imagem 26.jpeg",
   "/lovable-uploads/047dacc9-58aa-4d16-8b12-1be6ab64c306.png",
-  "/lovable-uploads/4dc52da0-9fee-4985-9e31-7c7d6978bfc5.png",
-  "/lovable-uploads/b440c1ca-7164-4fa2-9cad-3d84417f6ee1.png",
+  "/lovable-uploads/Imagem 27.jpeg",
+  "/lovable-uploads/Imagem 25.jpeg",
   "/lovable-uploads/5b47f8eb-064e-4857-af11-225347101468.png",
   "/lovable-uploads/c9043992-5704-4af6-b77c-6a1491b5be40.png",
   "/lovable-uploads/7eaf4824-b5ab-44d6-bc70-530dbd3fac30.png",
@@ -20,7 +20,7 @@ const clientImages = [
   "/lovable-uploads/463af361-b738-43df-8cde-b594144be27e.png",
   "/lovable-uploads/bfd8a7ba-22f1-492d-aa38-7d83142acc5b.png",
   "/lovable-uploads/f15d34c7-0897-4b01-87c8-4d27c5780df0.png",
-  "/lovable-uploads/cd2e0ea7-6e9d-44d3-8673-bded5a132a12.png",
+  "/lovable-uploads/Imagem 24.jpeg",
   "/lovable-uploads/3a81e8f7-f9ac-4099-a4b4-f27c9adce3c0.png"
 ];
 
