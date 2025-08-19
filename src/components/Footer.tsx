@@ -1,6 +1,8 @@
 import { MapPin, Phone, Mail, Shield } from "lucide-react";
+
 export const Footer = () => {
-  return <footer className="bg-primary text-white py-20">
+  return (
+    <footer className="bg-primary text-white py-20">
       <div className="container mx-auto px-8 max-w-7xl">
         <div className="grid md:grid-cols-4 gap-12">
           {/* Logo and Company Info */}
@@ -78,7 +80,9 @@ export const Footer = () => {
           <div>
             <h3 className="text-xl font-bold text-white mb-6">Nossos Serviços</h3>
             <ul className="space-y-3">
-              
+              <li className="text-white/80 hover:text-white transition-colors cursor-pointer">
+                ✓ Financiamento Imobiliário
+              </li>
               <li className="text-white/80 hover:text-white transition-colors cursor-pointer">
                 ✓ Projeção de financiamento bancário
               </li>
@@ -107,10 +111,16 @@ export const Footer = () => {
           <div>
             <h3 className="text-xl font-bold text-white mb-6">Informações Legais</h3>
             <div className="space-y-3">
-              <a href="#privacidade" className="block text-white/80 hover:text-white transition-colors">
+              <a 
+                href="#privacidade" 
+                className="block text-white/80 hover:text-white transition-colors"
+              >
                 Política de Privacidade
               </a>
-              <a href="#termos" className="block text-white/80 hover:text-white transition-colors">
+              <a 
+                href="#termos" 
+                className="block text-white/80 hover:text-white transition-colors"
+              >
                 Termos de Uso
               </a>
               <div className="pt-4">
@@ -138,5 +148,6 @@ export const Footer = () => {
           </div>
         </div>
       </div>
-    </footer>;
+    </footer>
+  );
 };
