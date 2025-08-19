@@ -133,7 +133,7 @@ export const SocialProofSection = () => {
               </h3>
               
               <p className="text-sm sm:text-base lg:text-xl text-muted-foreground leading-relaxed font-light">
-                Essas são pessoas como você, tem um sonho mas com as mesmas dúvidas, incertezas, restrições e até medos. Mas a pergunta que fazemos pra você é: Se essas pessoas, com tudo isso, conseguiram, por que você não?
+                Essas são pessoas como você, tem um sonho mas com as mesmas dúvidas, incertezas, restrições e até medos. Mas a pergunta que fazemos pra você é: Se essas pessoas, com tudo isso, chegaram lá, por que você não?
               </p>
               
               <div className="flex flex-col sm:flex-row flex-wrap gap-2 lg:gap-4">
