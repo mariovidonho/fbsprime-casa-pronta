@@ -4,8 +4,8 @@ import { useCallback } from "react";
 
 // Imagens dos clientes satisfeitos
 const clientImages = [
-  "/lovable-uploads/754bb55d-f400-493f-9108-92d7268b6f8b.png",
   "/lovable-uploads/Imagem 23.jpeg",
+  "/lovable-uploads/754bb55d-f400-493f-9108-92d7268b6f8b.png",
   "/lovable-uploads/84a4e474-7af6-4ccd-86e8-d67e77d9256f.png",
   "/lovable-uploads/Imagem 26.jpeg",
   "/lovable-uploads/047dacc9-58aa-4d16-8b12-1be6ab64c306.png",
