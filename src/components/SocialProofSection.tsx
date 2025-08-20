@@ -5,7 +5,7 @@ import { useCallback } from "react";
 // Imagens dos clientes satisfeitos
 const clientImages = [
   "/lovable-uploads/Imagem 23.jpeg",
-  "/lovable-uploads/754bb55d-f400-493f-9108-92d7268b6f8b.png",
+  "/lovable-uploads/Imagem 28.jpeg",
   "/lovable-uploads/84a4e474-7af6-4ccd-86e8-d67e77d9256f.png",
   "/lovable-uploads/Imagem 26.jpeg",
   "/lovable-uploads/047dacc9-58aa-4d16-8b12-1be6ab64c306.png",
@@ -22,6 +22,7 @@ const clientImages = [
   "/lovable-uploads/f15d34c7-0897-4b01-87c8-4d27c5780df0.png",
   "/lovable-uploads/Imagem 24.jpeg",
   "/lovable-uploads/3a81e8f7-f9ac-4099-a4b4-f27c9adce3c0.png"
+  "/lovable-uploads/Imagem 29.jpeg"
 ];
 
 const testimonials = [
