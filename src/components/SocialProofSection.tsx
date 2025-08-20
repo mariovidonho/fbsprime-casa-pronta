@@ -21,8 +21,8 @@ const clientImages = [
   "/lovable-uploads/bfd8a7ba-22f1-492d-aa38-7d83142acc5b.png",
   "/lovable-uploads/f15d34c7-0897-4b01-87c8-4d27c5780df0.png",
   "/lovable-uploads/Imagem 24.jpeg",
-  "/lovable-uploads/3a81e8f7-f9ac-4099-a4b4-f27c9adce3c0.png"
-  "/lovable-uploads/Imagem 29.jpeg"
+  "/lovable-uploads/3a81e8f7-f9ac-4099-a4b4-f27c9adce3c0.png",
+  "/lovable-uploads/Imagem 29.jpeg",
 ];
 
 const testimonials = [
