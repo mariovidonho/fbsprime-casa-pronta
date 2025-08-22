@@ -4,7 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
-import { Home, MapPin, DollarSign, Calendar } from "lucide-react";
+import { Home, MapPin, DollarSign, Calendar, CheckCircle2 } from "lucide-react";
 
 interface FormData {
   nome: string;
@@ -28,6 +28,7 @@ export const LeadForm = () => {
     valorMensal: "",
     localizacao: ""
   });
+  const [isSubmitted, setIsSubmitted] = useState(false);
 
   const handleInputChange = (field: keyof FormData, value: string) => {
     setFormData(prev => ({
@@ -59,6 +60,7 @@ export const LeadForm = () => {
           title: "Simulação enviada com sucesso!",
           description: "Nossa equipe entrará em contato em até 24 horas para apresentar sua proposta personalizada.",
         });
+        setIsSubmitted(true);
         
         // Reset form
         setFormData({
@@ -119,141 +121,157 @@ export const LeadForm = () => {
             </CardHeader>
             
             <CardContent>
-              <form onSubmit={handleSubmit} className="space-y-6">
-                {/* Personal Data */}
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <Label htmlFor="nome" className="text-base font-semibold">Nome Completo *</Label>
-                    <Input
-                      id="nome"
-                      type="text"
-                      placeholder="Digite seu nome completo"
-                      value={formData.nome}
-                      onChange={(e) => handleInputChange("nome", e.target.value)}
-                      required
-                      className="h-12"
-                    />
-                  </div>
-                  
-                  <div className="space-y-2">
-                    <Label htmlFor="telefone" className="text-base font-semibold">WhatsApp *</Label>
-                    <Input
-                      id="telefone"
-                      type="tel"
-                      placeholder="(11) 99999-9999"
-                      value={formData.telefone}
-                      onChange={(e) => handleInputChange("telefone", e.target.value)}
-                      required
-                      className="h-12"
-                    />
+              {isSubmitted ? (
+                <div className="animate-fade-in">
+                  <div className="rounded-3xl p-8 sm:p-10 bg-gradient-to-br from-emerald-500/10 via-emerald-400/10 to-transparent border border-emerald-500/20 text-center">
+                    <div className="mx-auto mb-6 sm:mb-8 w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-emerald-500/15 flex items-center justify-center ring-1 ring-emerald-500/30">
+                      <CheckCircle2 className="w-14 h-14 sm:w-16 sm:h-16 text-emerald-400" />
+                    </div>
+                    <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-2">
+                      Seu cadastro foi concluído com sucesso!
+                    </h3>
+                    <p className="text-white/90 text-base sm:text-lg">
+                      Aguarde que já entramos em contato com você!
+                    </p>
                   </div>
                 </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="email" className="text-base font-semibold">E-mail *</Label>
-                  <Input
-                    id="email"
-                    type="email"
-                    placeholder="seu@email.com"
-                    value={formData.email}
-                    onChange={(e) => handleInputChange("email", e.target.value)}
-                    required
-                    className="h-12"
-                  />
-                </div>
-
-                {/* Property Data */}
-                <div className="border-t pt-6">
-                  <h3 className="text-xl font-bold text-secondary mb-4 flex items-center gap-2">
-                    <DollarSign className="w-5 h-5" />
-                    Informações do Imóvel
-                  </h3>
-                  
+              ) : (
+                <form onSubmit={handleSubmit} className="space-y-6">
+                  {/* Personal Data */}
                   <div className="grid md:grid-cols-2 gap-6">
                     <div className="space-y-2">
-                      <Label htmlFor="valorImovel" className="text-base font-semibold">Valor do Imóvel *</Label>
+                      <Label htmlFor="nome" className="text-base font-semibold">Nome Completo *</Label>
                       <Input
-                        id="valorImovel"
+                        id="nome"
                         type="text"
-                        placeholder="R$ 300.000,00"
-                        value={formData.valorImovel}
-                        onChange={(e) => handleInputChange("valorImovel", e.target.value)}
+                        placeholder="Digite seu nome completo"
+                        value={formData.nome}
+                        onChange={(e) => handleInputChange("nome", e.target.value)}
                         required
                         className="h-12"
                       />
                     </div>
                     
                     <div className="space-y-2">
-                      <Label htmlFor="valorEntrada" className="text-base font-semibold">Valor Disponível para Entrada</Label>
+                      <Label htmlFor="telefone" className="text-base font-semibold">WhatsApp *</Label>
                       <Input
-                        id="valorEntrada"
-                        type="text"
-                        placeholder="R$ 30.000,00"
-                        value={formData.valorEntrada}
-                        onChange={(e) => handleInputChange("valorEntrada", e.target.value)}
-                        className="h-12"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="grid md:grid-cols-2 gap-6 mt-6">
-                    <div className="space-y-2">
-                      <Label htmlFor="valorMensal" className="text-base font-semibold">Quanto pode pagar por mês? *</Label>
-                      <Input
-                        id="valorMensal"
-                        type="text"
-                        placeholder="R$ 1.500,00"
-                        value={formData.valorMensal}
-                        onChange={(e) => handleInputChange("valorMensal", e.target.value)}
+                        id="telefone"
+                        type="tel"
+                        placeholder="(11) 99999-9999"
+                        value={formData.telefone}
+                        onChange={(e) => handleInputChange("telefone", e.target.value)}
                         required
                         className="h-12"
                       />
                     </div>
+                  </div>
+
+                  <div className="space-y-2">
+                    <Label htmlFor="email" className="text-base font-semibold">E-mail *</Label>
+                    <Input
+                      id="email"
+                      type="email"
+                      placeholder="seu@email.com"
+                      value={formData.email}
+                      onChange={(e) => handleInputChange("email", e.target.value)}
+                      required
+                      className="h-12"
+                    />
+                  </div>
+
+                  {/* Property Data */}
+                  <div className="border-t pt-6">
+                    <h3 className="text-xl font-bold text-secondary mb-4 flex items-center gap-2">
+                      <DollarSign className="w-5 h-5" />
+                      Informações do Imóvel
+                    </h3>
                     
-                    <div className="space-y-2">
-                      <Label htmlFor="localizacao" className="text-base font-semibold flex items-center gap-2">
-                        <MapPin className="w-4 h-4" />
-                        Localização Desejada
-                      </Label>
-                      <Input
-                        id="localizacao"
-                        type="text"
-                        placeholder="Jundiaí, Várzea Paulista, etc."
-                        value={formData.localizacao}
-                        onChange={(e) => handleInputChange("localizacao", e.target.value)}
-                        className="h-12"
-                      />
+                    <div className="grid md:grid-cols-2 gap-6">
+                      <div className="space-y-2">
+                        <Label htmlFor="valorImovel" className="text-base font-semibold">Valor do Imóvel *</Label>
+                        <Input
+                          id="valorImovel"
+                          type="text"
+                          placeholder="R$ 300.000,00"
+                          value={formData.valorImovel}
+                          onChange={(e) => handleInputChange("valorImovel", e.target.value)}
+                          required
+                          className="h-12"
+                        />
+                      </div>
+                      
+                      <div className="space-y-2">
+                        <Label htmlFor="valorEntrada" className="text-base font-semibold">Valor Disponível para Entrada</Label>
+                        <Input
+                          id="valorEntrada"
+                          type="text"
+                          placeholder="R$ 30.000,00"
+                          value={formData.valorEntrada}
+                          onChange={(e) => handleInputChange("valorEntrada", e.target.value)}
+                          className="h-12"
+                        />
+                      </div>
+                    </div>
+
+                    <div className="grid md:grid-cols-2 gap-6 mt-6">
+                      <div className="space-y-2">
+                        <Label htmlFor="valorMensal" className="text-base font-semibold">Quanto pode pagar por mês? *</Label>
+                        <Input
+                          id="valorMensal"
+                          type="text"
+                          placeholder="R$ 1.500,00"
+                          value={formData.valorMensal}
+                          onChange={(e) => handleInputChange("valorMensal", e.target.value)}
+                          required
+                          className="h-12"
+                        />
+                      </div>
+                      
+                      <div className="space-y-2">
+                        <Label htmlFor="localizacao" className="text-base font-semibold flex items-center gap-2">
+                          <MapPin className="w-4 h-4" />
+                          Localização Desejada
+                        </Label>
+                        <Input
+                          id="localizacao"
+                          type="text"
+                          placeholder="Jundiaí, Várzea Paulista, etc."
+                          value={formData.localizacao}
+                          onChange={(e) => handleInputChange("localizacao", e.target.value)}
+                          className="h-12"
+                        />
+                      </div>
                     </div>
                   </div>
-                </div>
 
-                {/* Submit Button */}
-                <div className="pt-6">
-                  <Button
-                    type="submit"
-                    size="xl"
-                    variant="cta"
-                    disabled={isSubmitting}
-                    className="w-full"
-                  >
-                    {isSubmitting ? (
-                      <>
-                        <Calendar className="w-5 h-5 mr-2 animate-spin" />
-                        Enviando simulação...
-                      </>
-                    ) : (
-                      <>
-                        🎯 Quero minha solução agora!
-                      </>
-                    )}
-                  </Button>
-                  
-                  <p className="text-sm text-muted-foreground text-center mt-4">
-                    Ao enviar, você concorda em receber contato da FBS Prime. 
-                    Não fazemos spam e seus dados estão seguros conosco.
-                  </p>
-                </div>
-              </form>
+                  {/* Submit Button */}
+                  <div className="pt-6">
+                    <Button
+                      type="submit"
+                      size="xl"
+                      variant="cta"
+                      disabled={isSubmitting}
+                      className="w-full"
+                    >
+                      {isSubmitting ? (
+                        <>
+                          <Calendar className="w-5 h-5 mr-2 animate-spin" />
+                          Enviando simulação...
+                        </>
+                      ) : (
+                        <>
+                          🎯 Quero minha solução agora!
+                        </>
+                      )}
+                    </Button>
+                    
+                    <p className="text-sm text-muted-foreground text-center mt-4">
+                      Ao enviar, você concorda em receber contato da FBS Prime. 
+                      Não fazemos spam e seus dados estão seguros conosco.
+                    </p>
+                  </div>
+                </form>
+              )}
             </CardContent>
           </Card>
           
