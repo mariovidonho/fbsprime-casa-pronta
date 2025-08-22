@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -18,6 +18,7 @@ interface FormData {
 
 export const LeadForm = () => {
   const { toast } = useToast();
+  [formularioEnviado, setFormularioEnviado] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState<FormData>({
     nome: "",
@@ -53,7 +54,7 @@ export const LeadForm = () => {
           source: "Landing Page FBS Prime"
         }),
       });
-
+      setFormularioEnviado(true);
       if (response.ok) {
         toast({
           title: "Simulação enviada com sucesso!",
@@ -120,171 +121,112 @@ export const LeadForm = () => {
             
             <CardContent>
               <form onSubmit={handleSubmit} className="space-y-6">
-                {/* Personal Data */}
-                <div className="grid md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <Label htmlFor="nome" className="text-base font-semibold">Nome Completo *</Label>
-                    <Input
-                      id="nome"
-                      type="text"
-                      placeholder="Digite seu nome completo"
-                      value={formData.nome}
-                      onChange={(e) => handleInputChange("nome", e.target.value)}
-                      required
-                      className="h-12"
-                    />
-                  </div>
-                  
-                  <div className="space-y-2">
-                    <Label htmlFor="telefone" className="text-base font-semibold">WhatsApp *</Label>
-                    <Input
-                      id="telefone"
-                      type="tel"
-                      placeholder="(11) 99999-9999"
-                      value={formData.telefone}
-                      onChange={(e) => handleInputChange("telefone", e.target.value)}
-                      required
-                      className="h-12"
-                    />
-                  </div>
-                </div>
-
-                <div className="space-y-2">
-                  <Label htmlFor="email" className="text-base font-semibold">E-mail *</Label>
-                  <Input
-                    id="email"
-                    type="email"
-                    placeholder="seu@email.com"
-                    value={formData.email}
-                    onChange={(e) => handleInputChange("email", e.target.value)}
-                    required
-                    className="h-12"
-                  />
-                </div>
-
-                {/* Property Data */}
-                <div className="border-t pt-6">
-                  <h3 className="text-xl font-bold text-secondary mb-4 flex items-center gap-2">
-                    <DollarSign className="w-5 h-5" />
-                    Informações do Imóvel
-                  </h3>
-                  
-                  <div className="grid md:grid-cols-2 gap-6">
-                    <div className="space-y-2">
-                      <Label htmlFor="valorImovel" className="text-base font-semibold">Valor do Imóvel *</Label>
-                      <Input
-                        id="valorImovel"
-                        type="text"
-                        placeholder="R$ 300.000,00"
-                        value={formData.valorImovel}
-                        onChange={(e) => handleInputChange("valorImovel", e.target.value)}
-                        required
-                        className="h-12"
-                      />
-                    </div>
-                    
-                    <div className="space-y-2">
-                      <Label htmlFor="valorEntrada" className="text-base font-semibold">Valor Disponível para Entrada</Label>
-                      <Input
-                        id="valorEntrada"
-                        type="text"
-                        placeholder="R$ 30.000,00"
-                        value={formData.valorEntrada}
-                        onChange={(e) => handleInputChange("valorEntrada", e.target.value)}
-                        className="h-12"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="grid md:grid-cols-2 gap-6 mt-6">
-                    <div className="space-y-2">
-                      <Label htmlFor="valorMensal" className="text-base font-semibold">Quanto pode pagar por mês? *</Label>
-                      <Input
-                        id="valorMensal"
-                        type="text"
-                        placeholder="R$ 1.500,00"
-                        value={formData.valorMensal}
-                        onChange={(e) => handleInputChange("valorMensal", e.target.value)}
-                        required
-                        className="h-12"
-                      />
-                    </div>
-                    
-                    <div className="space-y-2">
-                      <Label htmlFor="localizacao" className="text-base font-semibold flex items-center gap-2">
-                        <MapPin className="w-4 h-4" />
-                        Localização Desejada
-                      </Label>
-                      <Input
-                        id="localizacao"
-                        type="text"
-                        placeholder="Jundiaí, Várzea Paulista, etc."
-                        value={formData.localizacao}
-                        onChange={(e) => handleInputChange("localizacao", e.target.value)}
-                        className="h-12"
-                      />
-                    </div>
-                  </div>
-                </div>
-
-                {/* Submit Button */}
-                <div className="pt-6">
-                  <Button
-                    type="submit"
-                    size="xl"
-                    variant="cta"
-                    disabled={isSubmitting}
-                    className="w-full"
-                  >
-                    {isSubmitting ? (
-                      <>
-                        <Calendar className="w-5 h-5 mr-2 animate-spin" />
-                        Enviando simulação...
-                      </>
-                    ) : (
-                      <>
-                        🎯 Quero minha solução agora!
-                      </>
-                    )}
-                  </Button>
-                  
-                  <p className="text-sm text-muted-foreground text-center mt-4">
-                    Ao enviar, você concorda em receber contato da FBS Prime. 
-                    Não fazemos spam e seus dados estão seguros conosco.
-                  </p>
-                </div>
-              </form>
-            </CardContent>
-          </Card>
-          
-          {/* Trust indicators below form */}
-          <div className="grid md:grid-cols-3 gap-6 mt-8 lg:mt-12">
-            <div className="text-center text-white">
-              <div className="w-10 h-10 lg:w-12 lg:h-12 bg-accent rounded-full flex items-center justify-center mx-auto mb-3">
-                <span className="text-lg lg:text-xl">🔒</span>
-              </div>
-              <p className="font-semibold text-sm lg:text-base">Dados Protegidos</p>
-              <p className="text-xs lg:text-sm opacity-80">SSL e LGPD</p>
-            </div>
-            
-            <div className="text-center text-white">
-              <div className="w-10 h-10 lg:w-12 lg:h-12 bg-accent rounded-full flex items-center justify-center mx-auto mb-3">
-                <span className="text-lg lg:text-xl">⚡</span>
-              </div>
-              <p className="font-semibold text-sm lg:text-base">Resposta Rápida</p>
-              <p className="text-xs lg:text-sm opacity-80">Até 24 horas</p>
-            </div>
-            
-            <div className="text-center text-white">
-              <div className="w-10 h-10 lg:w-12 lg:h-12 bg-accent rounded-full flex items-center justify-center mx-auto mb-3">
-                <span className="text-lg lg:text-xl">🎯</span>
-              </div>
-              <p className="font-semibold text-sm lg:text-base">100% Personalizado</p>
-              <p className="text-xs lg:text-sm opacity-80">Solução sob medida</p>
-            </div>
+                return (
+  <>
+    {formularioEnviado ? (
+      // Se 'formularioEnviado' for TRUE, mostre esta mensagem
+      <div style={{ textAlign: 'center', marginTop: '50px' }}>
+        <h2>Obrigado!</h2>
+        <p>Seu cadastro foi concluído com sucesso. Em breve entraremos em contato.</p>
+      </div>
+    ) : (
+      // Se for FALSO, mostre o formulário original
+      <form onSubmit={handleSubmit} className="space-y-6">
+        {/*
+          Aqui está o código do seu formulário original,
+          sem as tags de abertura e fechamento <form>
+        */}
+        <div className="grid md:grid-cols-2 gap-6">
+          <div className="space-y-2">
+            <label htmlFor="nome" className="text-base font-semibold">Nome Completo</label>
+            <Input
+              id="nome"
+              type="text"
+              placeholder="Digite seu nome completo"
+              value={formData.nome}
+              onChange={(e) => handleInputChange("nome", e.target.value)}
+              required
+              className="h-12"
+            />
+          </div>
+          <div className="space-y-2">
+            <label htmlFor="telefone" className="text-base font-semibold">Telefone</label>
+            <Input
+              id="telefone"
+              type="tel"
+              placeholder="99999-9999"
+              value={formData.telefone}
+              onChange={(e) => handleInputChange("telefone", e.target.value)}
+              required
+              className="h-12"
+            />
           </div>
         </div>
-      </div>
-    </section>
-  );
-};
+        <div className="space-y-2">
+          <label htmlFor="email" className="text-base font-semibold">E-mail</label>
+          <Input
+            id="email"
+            type="email"
+            placeholder="seu@email.com"
+            value={formData.email}
+            onChange={(e) => handleInputChange("email", e.target.value)}
+            required
+            className="h-12"
+          />
+        </div>
+        <div className="space-y-2">
+          <label htmlFor="valorImovel" className="text-base font-semibold">Valor do Imóvel</label>
+          <Input
+            id="valorImovel"
+            type="text"
+            placeholder="R$ 300,000,00"
+            value={formData.valorImovel}
+            onChange={(e) => handleInputChange("valorImovel", e.target.value)}
+            required
+            className="h-12"
+          />
+        </div>
+        <div className="space-y-2">
+          <label htmlFor="valorEntrada" className="text-base font-semibold">Valor Disponível para Entrada</label>
+          <Input
+            id="valorEntrada"
+            type="text"
+            placeholder="R$ 30.000,00"
+            value={formData.valorEntrada}
+            onChange={(e) => handleInputChange("valorEntrada", e.target.value)}
+            required
+            className="h-12"
+          />
+        </div>
+        <div className="space-y-2">
+          <label htmlFor="valorMensal" className="text-base font-semibold">Quanto pode pagar por mês?</label>
+          <Input
+            id="valorMensal"
+            type="text"
+            placeholder="R$ 1.500,00"
+            value={formData.valorMensal}
+            onChange={(e) => handleInputChange("valorMensal", e.target.value)}
+            required
+            className="h-12"
+          />
+        </div>
+        <div className="space-y-2">
+          <label htmlFor="localizacao" className="text-base font-semibold">Localização Desejada</label>
+          <Input
+            id="localizacao"
+            type="text"
+            placeholder="Jundiaí, Várzea Paulista, etc."
+            value={formData.localizacao}
+            onChange={(e) => handleInputChange("localizacao", e.target.value)}
+            className="h-12"
+          />
+        </div>
+        <div className="flex justify-end">
+          <Button type="submit" variant="cta" disabled={isSubmitting} className="w-full">
+            {isSubmitting ? "Enviando simulação..." : "Quero minha solução agora!"}
+          </Button>
+        </div>
+      </form>
+    )}
+  </>
+);
