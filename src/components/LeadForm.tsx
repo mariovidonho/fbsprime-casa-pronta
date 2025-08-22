@@ -1,7 +1,4 @@
 import React, { useState } from 'react';
-import { Button } from "./ui/button";
-import { Input } from "./ui/input";
-import { useToast } from "./ui/use-toast";
 
 type FormData = {
   nome: string;
@@ -14,7 +11,6 @@ type FormData = {
 };
 
 export const LeadForm = () => {
-  const [toast] = useToast();
   const [formularioEnviado, setFormularioEnviado] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [formData, setFormData] = useState<FormData>({
@@ -26,6 +22,11 @@ export const LeadForm = () => {
     valorMensal: "",
     localizacao: "",
   });
+
+  const showToast = (title: string, description: string, type: 'success' | 'error') => {
+    // Implementação básica de toast ou você pode usar uma biblioteca
+    alert(`${title}: ${description}`);
+  };
 
   const handleInputChange = (field: keyof FormData, value: string) => {
     setFormData({
@@ -51,124 +52,132 @@ export const LeadForm = () => {
         }),
       });
 
-      setFormularioEnviado(true);
+      if (response.ok) {
+        setFormularioEnviado(true);
+      } else {
+        throw new Error('Erro na resposta do servidor');
+      }
 
     } catch (error) {
       console.error("Erro ao enviar o formulário:", error);
-      toast({
-        title: "Erro no envio",
-        description: "Não foi possível enviar o formulário. Tente novamente.",
-        variant: "destructive",
-      });
+      showToast(
+        "Erro no envio",
+        "Não foi possível enviar o formulário. Tente novamente.",
+        "error"
+      );
     } finally {
       setIsSubmitting(false);
     }
   };
 
   return (
-    <div className="card w-full lg:w-1/2 bg-gray-900 border-2 rounded-xl border-gray-700 p-8 shadow-2xl">
-      <div className="card-header space-y-4 text-center mb-6">
-        <h2 className="text-2xl lg:text-3xl font-bold">
+    <div className="w-full lg:w-1/2 bg-gray-900 border-2 rounded-xl border-gray-700 p-8 shadow-2xl">
+      <div className="space-y-4 text-center mb-6">
+        <h2 className="text-2xl lg:text-3xl font-bold text-white">
           Preencha as informações para receber uma simulação personalizada
         </h2>
       </div>
 
       {formularioEnviado ? (
         <div style={{ textAlign: 'center', marginTop: '50px' }}>
-          <h2>Obrigado!</h2>
-          <p>Seu cadastro foi concluído com sucesso. Em breve entraremos em contato.</p>
+          <h2 className="text-white text-2xl mb-4">Obrigado!</h2>
+          <p className="text-gray-300">Seu cadastro foi concluído com sucesso. Em breve entraremos em contato.</p>
         </div>
       ) : (
         <form onSubmit={handleSubmit} className="space-y-6">
           <div className="grid md:grid-cols-2 gap-6">
             <div className="space-y-2">
-              <label htmlFor="nome" className="text-base font-semibold">Nome Completo</label>
-              <Input
+              <label htmlFor="nome" className="text-base font-semibold text-white">Nome Completo</label>
+              <input
                 id="nome"
                 type="text"
                 placeholder="Digite seu nome completo"
                 value={formData.nome}
                 onChange={(e) => handleInputChange("nome", e.target.value)}
                 required
-                className="h-12"
+                className="w-full h-12 px-3 py-2 bg-gray-800 border border-gray-600 rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               />
             </div>
             <div className="space-y-2">
-              <label htmlFor="telefone" className="text-base font-semibold">Telefone</label>
-              <Input
+              <label htmlFor="telefone" className="text-base font-semibold text-white">Telefone</label>
+              <input
                 id="telefone"
                 type="tel"
                 placeholder="99999-9999"
                 value={formData.telefone}
                 onChange={(e) => handleInputChange("telefone", e.target.value)}
                 required
-                className="h-12"
+                className="w-full h-12 px-3 py-2 bg-gray-800 border border-gray-600 rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
               />
             </div>
           </div>
           <div className="space-y-2">
-            <label htmlFor="email" className="text-base font-semibold">E-mail</label>
-            <Input
+            <label htmlFor="email" className="text-base font-semibold text-white">E-mail</label>
+            <input
               id="email"
               type="email"
               placeholder="seu@email.com"
               value={formData.email}
               onChange={(e) => handleInputChange("email", e.target.value)}
               required
-              className="h-12"
+              className="w-full h-12 px-3 py-2 bg-gray-800 border border-gray-600 rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             />
           </div>
           <div className="space-y-2">
-            <label htmlFor="valorImovel" className="text-base font-semibold">Valor do Imóvel</label>
-            <Input
+            <label htmlFor="valorImovel" className="text-base font-semibold text-white">Valor do Imóvel</label>
+            <input
               id="valorImovel"
               type="text"
               placeholder="R$ 300,000,00"
               value={formData.valorImovel}
               onChange={(e) => handleInputChange("valorImovel", e.target.value)}
               required
-              className="h-12"
+              className="w-full h-12 px-3 py-2 bg-gray-800 border border-gray-600 rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             />
           </div>
           <div className="space-y-2">
-            <label htmlFor="valorEntrada" className="text-base font-semibold">Valor Disponível para Entrada</label>
-            <Input
+            <label htmlFor="valorEntrada" className="text-base font-semibold text-white">Valor Disponível para Entrada</label>
+            <input
               id="valorEntrada"
               type="text"
               placeholder="R$ 30.000,00"
               value={formData.valorEntrada}
               onChange={(e) => handleInputChange("valorEntrada", e.target.value)}
               required
-              className="h-12"
+              className="w-full h-12 px-3 py-2 bg-gray-800 border border-gray-600 rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             />
           </div>
           <div className="space-y-2">
-            <label htmlFor="valorMensal" className="text-base font-semibold">Quanto pode pagar por mês?</label>
-            <Input
+            <label htmlFor="valorMensal" className="text-base font-semibold text-white">Quanto pode pagar por mês?</label>
+            <input
               id="valorMensal"
               type="text"
               placeholder="R$ 1.500,00"
               value={formData.valorMensal}
               onChange={(e) => handleInputChange("valorMensal", e.target.value)}
               required
-              className="h-12"
+              className="w-full h-12 px-3 py-2 bg-gray-800 border border-gray-600 rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             />
           </div>
           <div className="space-y-2">
-            <label htmlFor="localizacao" className="text-base font-semibold">Localização Desejada</label>
-            <Input
+            <label htmlFor="localizacao" className="text-base font-semibold text-white">Localização Desejada</label>
+            <input
               id="localizacao"
               type="text"
               placeholder="Jundiaí, Várzea Paulista, etc."
               value={formData.localizacao}
               onChange={(e) => handleInputChange("localizacao", e.target.value)}
-              className="h-12"
+              className="w-full h-12 px-3 py-2 bg-gray-800 border border-gray-600 rounded-md text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
             />
           </div>
           <div className="flex justify-end">
-            <Button type="submit" variant="cta" disabled={isSubmitting} className="w-full">
+            <button 
+              type="submit" 
+              disabled={isSubmitting} 
+              className="w-full h-12 bg-blue-600 hover:bg-blue-700 disabled:bg-blue-800 text-white font-semibold rounded-md transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-gray-900"
+            >
               {isSubmitting ? "Enviando simulação..." : "Quero minha solução agora!"}
-            </Button>
+            </button>
           </div>
         </form>
       )}
