@@ -40,79 +40,39 @@ export const LeadForm = () => {
     e.preventDefault();
     setIsSubmitting(true);
 
+    // Send form data to webhook
     try {
-      // URL do seu Google Form
-      const GOOGLE_FORM_URL = "https://docs.google.com/forms/d/1E1n4TS24z5Fpxa9jL_ALZkLLAFWQFtsRx5PnHz01KYw/formResponse";
-      
-      // Criar FormData para envio ao Google Forms
-      const formDataToSend = new FormData();
-      
-      // IDs dos campos (vamos descobrir automaticamente)
-      // O Google Forms geralmente usa IDs sequenciais
-      // Vamos tentar os IDs mais comuns primeiro
-      const possibleIds = [
-        ['entry.1234567890', 'entry.123456789', 'entry.12345678', 'entry.1234567', 'entry.123456'],
-        ['entry.2345678901', 'entry.234567890', 'entry.23456789', 'entry.2345678', 'entry.234567'],
-        ['entry.3456789012', 'entry.345678901', 'entry.34567890', 'entry.3456789', 'entry.345678'],
-        ['entry.4567890123', 'entry.456789012', 'entry.45678901', 'entry.4567890', 'entry.456789'],
-        ['entry.5678901234', 'entry.567890123', 'entry.56789012', 'entry.5678901', 'entry.567890'],
-        ['entry.6789012345', 'entry.678901234', 'entry.67890123', 'entry.6789012', 'entry.678901'],
-        ['entry.7890123456', 'entry.789012345', 'entry.78901234', 'entry.7890123', 'entry.789012']
-      ];
-
-      // Para facilitar, vou usar uma abordagem mais simples
-      // Vamos enviar os dados como se fossem de um formulário normal
-      const params = new URLSearchParams();
-      
-      // Tentar múltiplas estratégias
-      // Estratégia 1: Usar parâmetros diretos
-      params.append('Nome completo', formData.nome);
-      params.append('Email', formData.email);
-      params.append('WhatsApp', formData.telefone);
-      params.append('Valor do Imóvel', formData.valorImovel);
-      params.append('Valor Disponível para Entrada', formData.valorEntrada);
-      params.append('Quanto pode pagar por mês', formData.valorMensal);
-      params.append('Localização Desejada', formData.localizacao);
-
-      // Enviar para Google Forms
-      await fetch(GOOGLE_FORM_URL + '?' + params.toString(), {
-        method: "GET",
-        mode: "no-cors"
-      });
-
-      // Estratégia alternativa - POST com FormData
-      const formDataPost = new FormData();
-      formDataPost.append('entry.1', formData.nome);
-      formDataPost.append('entry.2', formData.email);
-      formDataPost.append('entry.3', formData.telefone);
-      formDataPost.append('entry.4', formData.valorImovel);
-      formDataPost.append('entry.5', formData.valorEntrada);
-      formDataPost.append('entry.6', formData.valorMensal);
-      formDataPost.append('entry.7', formData.localizacao);
-
-      await fetch(GOOGLE_FORM_URL, {
+      const response = await fetch("https://hook.us2.make.com/6ajtjv40petejbmlxoedaludgbv027p5", {
         method: "POST",
-        mode: "no-cors",
-        body: formDataPost
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          ...formData,
+          timestamp: new Date().toISOString(),
+          source: "Landing Page FBS Prime"
+        }),
       });
 
-      // Como o Google Forms retorna no-cors, assumimos que deu certo
-      toast({
-        title: "Simulação enviada com sucesso!",
-        description: "Nossa equipe entrará em contato em até 24 horas para apresentar sua proposta personalizada.",
-      });
-      
-      // Reset form
-      setFormData({
-        nome: "",
-        email: "",
-        telefone: "",
-        valorImovel: "",
-        valorEntrada: "",
-        valorMensal: "",
-        localizacao: ""
-      });
-
+      if (response.ok) {
+        toast({
+          title: "Simulação enviada com sucesso!",
+          description: "Nossa equipe entrará em contato em até 24 horas para apresentar sua proposta personalizada.",
+        });
+        
+        // Reset form
+        setFormData({
+          nome: "",
+          email: "",
+          telefone: "",
+          valorImovel: "",
+          valorEntrada: "",
+          valorMensal: "",
+          localizacao: ""
+        });
+      } else {
+        throw new Error("Erro no envio");
+      }
     } catch (error) {
       console.error("Erro ao enviar formulário:", error);
       toast({
