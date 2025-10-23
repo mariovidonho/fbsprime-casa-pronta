@@ -1,6 +1,5 @@
 import { Star, Quote, ChevronLeft, ChevronRight } from "lucide-react";
-import useEmblaCarousel from "embla-carousel-react";
-import { useCallback } from "react";
+import { useState, useEffect } from "react";
 
 // Imagens dos clientes satisfeitos
 const clientImages = [
@@ -57,15 +56,22 @@ const stats = [
 ];
 
 export const SocialProofSection = () => {
-  const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
+  const [currentSlide, setCurrentSlide] = useState(0);
 
-  const scrollPrev = useCallback(() => {
-    if (emblaApi) emblaApi.scrollPrev();
-  }, [emblaApi]);
+  const nextSlide = () => {
+    setCurrentSlide((prev) => (prev + 1) % clientImages.length);
+  };
 
-  const scrollNext = useCallback(() => {
-    if (emblaApi) emblaApi.scrollNext();
-  }, [emblaApi]);
+  const prevSlide = () => {
+    setCurrentSlide((prev) => (prev - 1 + clientImages.length) % clientImages.length);
+  };
+
+  // Autoplay - passa automaticamente a cada 3 segundos
+  useEffect(() => {
+    const autoplay = setInterval(nextSlide, 3000);
+    return () => clearInterval(autoplay);
+  }, []);
+
   return (
     <section className="py-32 bg-white relative overflow-hidden">
       {/* Geometric elements */}
@@ -94,10 +100,13 @@ export const SocialProofSection = () => {
                 <div className="absolute -inset-2 lg:-inset-4 bg-gradient-geometric rounded-3xl opacity-40"></div>
                 
                 {/* Carousel */}
-                <div className="relative overflow-hidden rounded-3xl shadow-strong" ref={emblaRef}>
-                  <div className="flex">
+                <div className="relative overflow-hidden rounded-3xl shadow-strong">
+                  <div 
+                    className="flex transition-transform duration-500 ease-out"
+                    style={{ transform: `translateX(-${currentSlide * 100}%)` }}
+                  >
                     {clientImages.map((image, index) => (
-                      <div key={index} className="flex-[0_0_100%] min-w-0">
+                      <div key={index} className="flex-shrink-0 w-full">
                         <img
                           src={image}
                           alt={`Cliente satisfeito ${index + 1} - FBS Prime`}
@@ -109,17 +118,30 @@ export const SocialProofSection = () => {
                   
                   {/* Navigation buttons */}
                   <button
-                    className="absolute left-2 lg:left-4 top-1/2 -translate-y-1/2 w-10 h-10 lg:w-12 lg:h-12 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white transition-all duration-200 shadow-lg"
-                    onClick={scrollPrev}
+                    className="absolute left-2 lg:left-4 top-1/2 -translate-y-1/2 w-10 h-10 lg:w-12 lg:h-12 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white transition-all duration-200 shadow-lg z-10"
+                    onClick={prevSlide}
                   >
                     <ChevronLeft className="w-5 h-5 lg:w-6 lg:h-6 text-primary" />
                   </button>
                   <button
-                    className="absolute right-2 lg:right-4 top-1/2 -translate-y-1/2 w-10 h-10 lg:w-12 lg:h-12 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white transition-all duration-200 shadow-lg"
-                    onClick={scrollNext}
+                    className="absolute right-2 lg:right-4 top-1/2 -translate-y-1/2 w-10 h-10 lg:w-12 lg:h-12 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-white transition-all duration-200 shadow-lg z-10"
+                    onClick={nextSlide}
                   >
                     <ChevronRight className="w-5 h-5 lg:w-6 lg:h-6 text-primary" />
                   </button>
+
+                  {/* Indicators */}
+                  <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+                    {clientImages.map((_, index) => (
+                      <button
+                        key={index}
+                        className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                          index === currentSlide ? 'bg-white w-8' : 'bg-white/50'
+                        }`}
+                        onClick={() => setCurrentSlide(index)}
+                      />
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
