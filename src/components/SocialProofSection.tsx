@@ -50,7 +50,7 @@ const testimonials = [
 
 const stats = [
   { number: "500+", label: "Famílias atendidas" },
-  { number: "95%", label: "Taxa de aprovação" },
+  { number: "88%", label: "Taxa de aprovação" },
   { number: "5", label: "anos atendendo diversas famílias com diversas soluções" },
   { number: "100%", label: "Transparência garantida" }
 ];
