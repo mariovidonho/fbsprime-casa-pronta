@@ -2,31 +2,7 @@ import { Star, Quote, ChevronLeft, ChevronRight } from "lucide-react";
 import { useState, useEffect } from "react";
 
 // Imagens dos clientes satisfeitos
-const clientImages = [
-  "/lovable-uploads/Imagem 23.jpeg",
-  "/lovable-uploads/Imagem 28.jpeg",
-  "/lovable-uploads/84a4e474-7af6-4ccd-86e8-d67e77d9256f.png",
-  "/lovable-uploads/Imagem 26.jpeg",
-  "/lovable-uploads/047dacc9-58aa-4d16-8b12-1be6ab64c306.png",
-  "/lovable-uploads/Imagem 27.jpeg",
-  "/lovable-uploads/Imagem 25.jpeg",
-  "/lovable-uploads/5b47f8eb-064e-4857-af11-225347101468.png",
-  "/lovable-uploads/c9043992-5704-4af6-b77c-6a1491b5be40.png",
-  "/lovable-uploads/7eaf4824-b5ab-44d6-bc70-530dbd3fac30.png",
-  "/lovable-uploads/e7f7e38a-0816-4a67-8186-87359dea0e10.png",
-  "/lovable-uploads/c7cd2cd0-e8f7-4601-8388-9df82e50c742.png",
-  "/lovable-uploads/9139b4e3-95f8-41e7-b576-323b501c1448.png",
-  "/lovable-uploads/463af361-b738-43df-8cde-b594144be27e.png",
-  "/lovable-uploads/bfd8a7ba-22f1-492d-aa38-7d83142acc5b.png",
-  "/lovable-uploads/f15d34c7-0897-4b01-87c8-4d27c5780df0.png",
-  "/lovable-uploads/Imagem 24.jpeg",
-  "/lovable-uploads/3a81e8f7-f9ac-4099-a4b4-f27c9adce3c0.png",
-  "/lovable-uploads/Imagem 29.jpeg",
-];
-
-const testimonials = [
-  {
-    name: "Ana Paula Silva",
+const clientImages = [\n  "/lovable-uploads/social-proof-1.jpeg",\n  "/lovable-uploads/social-proof-2.jpeg",\n  "/lovable-uploads/social-proof-3.jpeg",\n  "/lovable-uploads/social-proof-4.jpeg",\n  "/lovable-uploads/Imagem 28.jpeg",\n  "/lovable-uploads/84a4e474-7af6-4ccd-86e8-d67e77d9256f.png",\n  "/lovable-uploads/Imagem 26.jpeg",\n  "/lovable-uploads/047dacc9-58aa-4d16-8b12-1be6ab64c306.png",\n  "/lovable-uploads/Imagem 27.jpeg",\n  "/lovable-uploads/Imagem 25.jpeg",\n  "/lovable-uploads/5b47f8eb-064e-4857-af11-225347101468.png",\n  "/lovable-uploads/c9043992-5704-4af6-b77c-6a1491b5be40.png",\n  "/lovable-uploads/7eaf4824-b5ab-44d6-bc70-530dbd3fac30.png",\n  "/lovable-uploads/e7f7e38a-0816-4a67-8186-87359dea0e10.png",\n  "/lovable-uploads/c7cd2cd0-e8f7-4601-8388-9df82e50c742.png",\n  "/lovable-uploads/9139b4e3-95f8-41e7-b576-323b501c1448.png",\n  "/lovable-uploads/463af361-b738-43df-8cde-b594144be27e.png",\n  "/lovable-uploads/bfd8a7ba-22f1-492d-aa38-7d83142acc5b.png",\n  "/lovable-uploads/f15d34c7-0897-4b01-87c8-4d27c5780df0.png",\n  "/lovable-uploads/Imagem 24.jpeg",\n  "/lovable-uploads/3a81e8f7-f9ac-4099-a4b4-f27c9adce3c0.png",\n  "/lovable-uploads/Imagem 29.jpeg",];\n\nconst testimonials = [ {   name: "Ana Paula Silva",
     profession: "Professora",
     content: "Consegui minha casa própria com apenas 10% de entrada. O atendimento da FBS Prime foi excepcional, me explicaram tudo com clareza e paciência.",
     rating: 5,
