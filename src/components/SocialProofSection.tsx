@@ -1,7 +1,7 @@
 import { Star, Quote, ChevronLeft, ChevronRight } from "lucide-react";
 import { useState, useEffect } from "react";
 
-// Imagens dos clientes satisfeitos
+// Imagens dos clientes satisfeitos que realmente existem na pasta public/lovable-uploads/
 const clientImages = [
   "/lovable-uploads/Imagem 1.jpeg",
   "/lovable-uploads/Imagem 2.jpeg",
@@ -17,20 +17,14 @@ const clientImages = [
   "/lovable-uploads/Imagem 12.jpeg",
   "/lovable-uploads/Imagem 13.jpeg",
   "/lovable-uploads/Imagem 14.jpeg",
-  "/lovable-uploads/Imagem 16.jpeg",
   "/lovable-uploads/Imagem 17.jpeg",
   "/lovable-uploads/Imagem 18.jpeg",
-  "/lovable-uploads/Imagem 19.jpeg",
   "/lovable-uploads/Imagem 20.jpeg",
   "/lovable-uploads/Imagem 21.jpeg",
   "/lovable-uploads/Imagem 22.jpeg",
   "/lovable-uploads/Imagem 23.jpeg",
   "/lovable-uploads/Imagem 24.jpeg",
-  "/lovable-uploads/Imagem 25.jpeg",
-  "/lovable-uploads/Imagem 26.jpeg",
   "/lovable-uploads/Imagem 27.jpeg",
-  "/lovable-uploads/Imagem 28.jpeg",
-  "/lovable-uploads/Imagem 29.jpeg",
   "/lovable-uploads/Imagem 30.jpeg",
 ];
 
@@ -80,7 +74,7 @@ export const SocialProofSection = () => {
   useEffect(() => {
     const autoplay = setInterval(nextSlide, 3000);
     return () => clearInterval(autoplay);
-  }, []);
+  }, [clientImages.length]);
 
   return (
     <section className="py-32 bg-white relative overflow-hidden">
