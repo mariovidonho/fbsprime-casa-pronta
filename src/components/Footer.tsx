@@ -24,12 +24,12 @@ export const Footer = () => {
             <div className="space-y-6">
               {/* Atendimento e pós-venda */}
               <div>
-                <h4 className="text-lg font-semibold text-accent mb-3">Atendimento e pós-venda</h4>
+                <h4 className="text-lg font-semibold text-accent mb-3">Pós-venda e Administrativo</h4>
                 <div className="space-y-3">
                   <div className="flex items-start gap-3">
                     <Phone className="w-5 h-5 text-primary-light mt-1 flex-shrink-0" />
                     <div>
-                      <p className="text-white font-semibold">(11) 91725-0634</p>
+                      <p className="text-white font-semibold">(11) 91491-1179</p>
                       <p className="text-white/70 text-sm">WhatsApp - Atendimento rápido</p>
                     </div>
                   </div>
