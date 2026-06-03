@@ -16,7 +16,6 @@ const clientImages = [
   "/lovable-uploads/Imagem 11.jpeg",
   "/lovable-uploads/Imagem 12.jpeg",
   "/lovable-uploads/Imagem 13.jpeg",
-  "/lovable-uploads/Imagem 14.jpeg",
   "/lovable-uploads/Imagem 17.jpeg",
   "/lovable-uploads/Imagem 18.jpeg",
   "/lovable-uploads/Imagem 20.jpeg",
