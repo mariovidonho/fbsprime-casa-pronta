@@ -107,7 +107,7 @@ export const Footer = () => {
           <div>
             <h3 className="text-xl font-bold text-white mb-6">Informações Legais</h3>
             <div className="space-y-3">
-              <a href="#privacidade" className="block text-white/80 hover:text-white transition-colors">
+              <a href="/privacidade.html" className="block text-white/80 hover:text-white transition-colors">
                 Política de Privacidade
               </a>
               <a href="#termos" className="block text-white/80 hover:text-white transition-colors">
