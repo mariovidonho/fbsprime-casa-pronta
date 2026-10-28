@@ -1,30 +1,21 @@
 import { Star, Quote, ChevronLeft, ChevronRight } from "lucide-react";
 import { useState, useEffect } from "react";
 
-// Imagens dos clientes satisfeitos que realmente existem na pasta public/lovable-uploads/
+// Fotos de clientes do carrossel (pasta public/clientes/)
 const clientImages = [
-  "/lovable-uploads/Imagem 1.jpeg",
-  "/lovable-uploads/Imagem 2.jpeg",
-  "/lovable-uploads/Imagem 3.jpeg",
-  "/lovable-uploads/Imagem 4.jpeg",
-  "/lovable-uploads/Imagem 5.jpeg",
-  "/lovable-uploads/Imagem 6.jpeg",
-  "/lovable-uploads/Imagem 7.jpeg",
-  "/lovable-uploads/Imagem 8.jpeg",
-  "/lovable-uploads/Imagem 9.jpeg",
-  "/lovable-uploads/Imagem 10.jpeg",
-  "/lovable-uploads/Imagem 11.jpeg",
-  "/lovable-uploads/Imagem 12.jpeg",
-  "/lovable-uploads/Imagem 13.jpeg",
-  "/lovable-uploads/Imagem 17.jpeg",
-  "/lovable-uploads/Imagem 18.jpeg",
-  "/lovable-uploads/Imagem 20.jpeg",
-  "/lovable-uploads/Imagem 21.jpeg",
-  "/lovable-uploads/Imagem 22.jpeg",
-  "/lovable-uploads/Imagem 23.jpeg",
-  "/lovable-uploads/Imagem 24.jpeg",
-  "/lovable-uploads/Imagem 27.jpeg",
-  "/lovable-uploads/Imagem 30.jpeg",
+  "/clientes/cliente-01.jpg",
+  "/clientes/cliente-02.jpg",
+  "/clientes/cliente-03.jpg",
+  "/clientes/cliente-04.jpg",
+  "/clientes/cliente-05.jpg",
+  "/clientes/cliente-06.jpg",
+  "/clientes/cliente-07.jpg",
+  "/clientes/cliente-08.jpg",
+  "/clientes/cliente-09.jpg",
+  "/clientes/cliente-10.jpg",
+  "/clientes/cliente-11.jpg",
+  "/clientes/cliente-12.jpg",
+  "/clientes/cliente-13.jpg",
 ];
 
 const testimonials = [
@@ -113,7 +104,7 @@ export const SocialProofSection = () => {
                         <img
                           src={image}
                           alt={`Cliente satisfeito ${index + 1} - FBS Prime`}
-                          className="w-full h-[250px] sm:h-[300px] lg:h-[400px] object-cover"
+                          className="w-full h-[250px] sm:h-[300px] lg:h-[400px] object-cover object-[center_35%]"
                         />
                       </div>
                     ))}
