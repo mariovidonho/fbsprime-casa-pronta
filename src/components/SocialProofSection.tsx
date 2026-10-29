@@ -7,6 +7,7 @@ const clientImages = [
   "/clientes/cliente-02.jpg",
   "/clientes/cliente-03.jpg",
   "/clientes/cliente-04.jpg",
+  "/clientes/cliente-14.jpg",
   "/clientes/cliente-05.jpg",
   "/clientes/cliente-06.jpg",
   "/clientes/cliente-07.jpg",
@@ -14,6 +15,7 @@ const clientImages = [
   "/clientes/cliente-09.jpg",
   "/clientes/cliente-10.jpg",
   "/clientes/cliente-11.jpg",
+  "/clientes/cliente-15.jpg",
   "/clientes/cliente-12.jpg",
   "/clientes/cliente-13.jpg",
 ];
