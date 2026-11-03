@@ -182,3 +182,22 @@ All colors MUST be HSL.
     scroll-behavior: smooth;
   }
 }
+/* Redesign "Onda profunda" */
+@layer utilities {
+  .marquee {
+    animation: marquee 40s linear infinite;
+  }
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+  }
+  .wave-a { animation: wave-drift 9s ease-in-out infinite alternate; }
+  .wave-b { animation: wave-drift 12s ease-in-out infinite alternate-reverse; }
+  @keyframes wave-drift {
+    from { transform: translateX(-2%); }
+    to { transform: translateX(2%); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .marquee, .wave-a, .wave-b { animation: none; }
+  }
+}

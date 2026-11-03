@@ -1,35 +1,28 @@
-import { useRef } from "react";
-import { HeroSection } from "@/components/HeroSection";
-import { BenefitsSection } from "@/components/BenefitsSection";
-import { ComparisonSection } from "@/components/ComparisonSection";
-import { SocialProofSection } from "@/components/SocialProofSection";
-import { ObjectionsSection } from "@/components/ObjectionsSection";
-import { LeadForm } from "@/components/LeadForm";
-import { Footer } from "@/components/Footer";
+import { MotionConfig } from "framer-motion";
+import { Header } from "@/components/onda/Header";
+import { Hero } from "@/components/onda/Hero";
+import { Numbers } from "@/components/onda/Numbers";
+import { Comparison } from "@/components/onda/Comparison";
+import { Clients } from "@/components/onda/Clients";
+import { Faq } from "@/components/onda/Faq";
+import { CtaBand, SiteFooter, StickyActions } from "@/components/onda/Closing";
 
-const LandingPage = () => {
-  const formRef = useRef<HTMLElement>(null);
-
-  const scrollToForm = () => {
-    formRef.current?.scrollIntoView({
-      behavior: "smooth",
-      block: "start",
-    });
-  };
-
-  return (
-    <div className="min-h-screen">
-      <HeroSection onScrollToForm={scrollToForm} />
-      <BenefitsSection />
-      <ComparisonSection />
-      <SocialProofSection />
-      <ObjectionsSection />
-      <section ref={formRef}>
-        <LeadForm />
-      </section>
-      <Footer />
+const LandingPage = () => (
+  <MotionConfig reducedMotion="user">
+    <div className="min-h-screen overflow-x-clip bg-white font-sans text-deep">
+      <Header />
+      <main>
+        <Hero />
+        <Numbers />
+        <Comparison />
+        <Clients />
+        <Faq />
+        <CtaBand />
+      </main>
+      <SiteFooter />
+      <StickyActions />
     </div>
-  );
-};
+  </MotionConfig>
+);
 
 export default LandingPage;

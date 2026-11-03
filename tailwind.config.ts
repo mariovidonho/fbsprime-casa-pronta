@@ -19,9 +19,17 @@ export default {
 		},
 		extend: {
 			fontFamily: {
-				sans: ['Inter', 'system-ui', 'sans-serif'],
+				sans: ['Montserrat', 'system-ui', 'sans-serif'],
+				serif: ['Georgia', 'Gelasio', 'serif'],
 			},
 			colors: {
+				// Manual de Marca FBS Prime
+				deep: '#00334E',
+				brand: '#015B96',
+				sky: '#519AC4',
+				'sky-soft': '#8EC2E0',
+				paper: '#F4F6F8',
+				ink: '#2E4B5F',
 				border: 'hsl(var(--border))',
 				input: 'hsl(var(--input))',
 				ring: 'hsl(var(--ring))',
