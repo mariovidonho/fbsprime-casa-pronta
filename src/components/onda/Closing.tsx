@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowUp } from "lucide-react";
-import { Reveal, Wave, scrollToId, whatsappLink, WhatsIcon } from "./shared";
+import { asset, Reveal, Wave, scrollToId, whatsappLink, WhatsIcon } from "./shared";
 
 export const CtaBand = () => (
   <section className="relative overflow-hidden bg-brand text-white">
@@ -39,7 +39,7 @@ export const SiteFooter = () => (
     <div className="bg-deep text-white">
       <div className="mx-auto grid max-w-6xl gap-12 px-4 pb-24 pt-10 sm:px-6 md:grid-cols-3 md:pb-12">
         <div className="flex flex-col gap-4">
-          <img src="/brand/logo-branco.png" alt="FBS Prime" className="h-28 w-auto self-start" />
+          <img src={asset("brand/logo-branco.png")} alt="FBS Prime" className="h-28 w-auto self-start" />
           <p className="max-w-xs text-sm leading-relaxed text-[#C9DBE8]">
             Correspondente bancário. A aprovação de crédito depende da análise do banco ou da administradora.
           </p>
@@ -62,7 +62,7 @@ export const SiteFooter = () => (
             <br />
             Jundiaí - SP, 13214-077
           </span>
-          <a href="/privacidade.html" className="underline">
+          <a href={asset("privacidade.html")} className="underline">
             Política de Privacidade
           </a>
         </div>

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowLeft, ArrowRight, Check, Loader2, Lock } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { asset, MODO_DEMO } from "./shared";
 
 const WEBHOOK = "https://hook.us2.make.com/6ajtjv40petejbmlxoedaludgbv027p5";
 
@@ -60,6 +61,13 @@ export const HeroForm = ({ caminho, prefill, extra }: Props) => {
   const enviar = async (e: React.FormEvent) => {
     e.preventDefault();
     setEnviando(true);
+    if (MODO_DEMO) {
+      // Demonstração para a equipe: simula o envio sem gerar lead no Make.
+      await new Promise((r) => setTimeout(r, 700));
+      setEnviando(false);
+      setPasso(3);
+      return;
+    }
     try {
       const r = await fetch(WEBHOOK, {
         method: "POST",
@@ -231,7 +239,7 @@ export const HeroForm = ({ caminho, prefill, extra }: Props) => {
           <Lock className="mt-0.5 h-3.5 w-3.5 shrink-0" />
           <span>
             Seus dados são usados só para o contato sobre a simulação, conforme a LGPD.{" "}
-            <a href="/privacidade.html" className="underline">
+            <a href={asset("privacidade.html")} className="underline">
               Política de Privacidade
             </a>
           </span>

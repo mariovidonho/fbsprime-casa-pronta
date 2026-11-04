@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { motion, type PanInfo } from "framer-motion";
 import { ChevronLeft, ChevronRight, Quote, Star } from "lucide-react";
-import { CLIENT_IMAGES, Eyebrow, Reveal } from "./shared";
+import { CLIENT_IMAGES, Eyebrow, Reveal, scrollToId } from "./shared";
 
 const depoimentos = [
   {
@@ -57,6 +57,13 @@ export const Clients = () => {
           <p className="text-lg leading-relaxed text-[#D3E3EE]">
             Professores, enfermeiras, autônomos, aposentados. Perfis diferentes, cada um com o seu caminho.
           </p>
+          <p className="font-serif text-2xl font-bold text-sky-soft sm:text-3xl">Você pode ser o próximo.</p>
+          <button
+            onClick={() => scrollToId("simular")}
+            className="mt-1 rounded-2xl bg-white px-6 py-3.5 text-base font-bold text-deep transition hover:scale-[1.03] hover:bg-sky-soft"
+          >
+            Quero ser o próximo
+          </button>
         </Reveal>
       </div>
 

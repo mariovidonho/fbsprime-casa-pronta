@@ -10,7 +10,13 @@ export const whatsappLink = (texto = "Olá! Vim pelo site e quero fazer uma simu
 // Para produção, o ideal é hospedar o arquivo em /public/video/hero.mp4 e trocar aqui.
 export const HERO_VIDEO =
   "https://videos.pexels.com/video-files/7646764/7646764-hd_1920_1080_25fps.mp4";
-export const HERO_POSTER = "/clientes/cliente-01.jpg";
+/** Caminho de arquivos da pasta public, respeitando a base do build (permite publicar em subpastas). */
+export const asset = (p: string) => `${import.meta.env.BASE_URL}${p.replace(/^\//, "")}`;
+
+/** Versão de demonstração: o formulário não envia nada ao Make. */
+export const MODO_DEMO = import.meta.env.VITE_DEMO === "1";
+
+export const HERO_POSTER = asset("clientes/cliente-01.jpg");
 
 export const CLIENT_IMAGES = [
   "/clientes/cliente-01.jpg",
@@ -26,7 +32,7 @@ export const CLIENT_IMAGES = [
   "/clientes/cliente-15.jpg",
   "/clientes/cliente-12.jpg",
   "/clientes/cliente-13.jpg",
-];
+].map(asset);
 
 export const scrollToId = (id: string) =>
   document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });

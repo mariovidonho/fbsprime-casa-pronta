@@ -5,21 +5,21 @@ import { Eyebrow, Reveal, scrollToId } from "./shared";
 const sozinho = [
   "Uma opção por vez, a do banco em que você entrou",
   "Entrada alta exigida logo de início",
-  "Atendimento padronizado",
+  "Atendimento padronizado e “robotizado”",
   "Você corre atrás da papelada",
 ];
 const comFbs = [
   "Financiamento, consórcio e carta contemplada lado a lado",
   "Caminhos com entrada reduzida para o seu perfil",
-  "Um consultor do começo ao fim",
-  "Nós cuidamos dos documentos com você",
+  "Um consultor especializado do início ao fim",
+  "Facilitamos a burocracia para você",
 ];
 
 const solucoes = [
   { t: "Financiamento", d: "Com entrada facilitada nos bancos parceiros." },
-  { t: "Consórcio imobiliário", d: "Sem juros de financiamento, parcelas planejadas." },
+  { t: "Consórcio imobiliário", d: "As taxas mais competitivas do mercado e parcelas reduzidas." },
   { t: "Carta contemplada", d: "Crédito já liberado para comprar agora." },
-  { t: "Crédito com garantia", d: "Use um bem seu e pague taxas menores." },
+  { t: "Crédito com garantia", d: "Use o seu bem e pague taxas menores." },
 ];
 
 export const Comparison = () => (

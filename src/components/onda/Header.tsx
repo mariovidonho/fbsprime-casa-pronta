@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
-import { scrollToId, whatsappLink, WhatsIcon } from "./shared";
+import { asset, scrollToId, whatsappLink, WhatsIcon } from "./shared";
 
 const links = [
   { id: "solucoes", label: "Soluções" },
@@ -37,7 +37,7 @@ export const Header = () => {
           className="flex items-center gap-3 text-white"
           aria-label="FBS Prime, voltar ao topo"
         >
-          <img src="/brand/simbolo-branco.png" alt="" className="h-10 w-auto" />
+          <img src={asset("brand/simbolo-branco.png")} alt="" className="h-10 w-auto" />
           <span className="flex flex-col items-start leading-none">
             <span className="whitespace-nowrap font-serif text-xl font-bold tracking-wide">FBS Prime</span>
             <span className="mt-1 hidden text-[10px] font-semibold uppercase tracking-[0.25em] text-sky-soft sm:block">
