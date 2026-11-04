@@ -201,3 +201,29 @@ All colors MUST be HSL.
     .marquee, .wave-a, .wave-b { animation: none; }
   }
 }
+
+/* Slider do simulador */
+@layer components {
+  .fbs-range {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 8px;
+    border-radius: 9999px;
+    background: linear-gradient(to right, #8EC2E0 0%, #8EC2E0 var(--pct, 50%), rgba(255,255,255,0.18) var(--pct, 50%), rgba(255,255,255,0.18) 100%);
+    cursor: pointer;
+  }
+  .fbs-range:focus-visible { outline: 3px solid #8EC2E0; outline-offset: 4px; }
+  .fbs-range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 26px; height: 26px; border-radius: 9999px;
+    background: #FFFFFF; border: 6px solid #519AC4;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.35);
+    transition: transform .15s;
+  }
+  .fbs-range::-webkit-slider-thumb:hover { transform: scale(1.12); }
+  .fbs-range::-moz-range-thumb {
+    width: 18px; height: 18px; border-radius: 9999px;
+    background: #FFFFFF; border: 5px solid #519AC4;
+  }
+}

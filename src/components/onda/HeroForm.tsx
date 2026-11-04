@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import { ArrowLeft, ArrowRight, Check, Loader2, Lock } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
@@ -32,11 +32,23 @@ const formatarMoeda = (v: string) => {
   return "R$ " + Number(d).toLocaleString("pt-BR");
 };
 
-export const HeroForm = ({ caminho }: { caminho?: string }) => {
+type Props = {
+  caminho?: string;
+  /** Valores vindos do simulador, que preenchem o passo 2. */
+  prefill?: Pick<Dados, "valorImovel" | "valorEntrada" | "valorMensal">;
+  /** Dados extras enviados junto ao Make (renda, prazo etc.). */
+  extra?: Record<string, string>;
+};
+
+export const HeroForm = ({ caminho, prefill, extra }: Props) => {
   const { toast } = useToast();
   const [passo, setPasso] = useState<1 | 2 | 3>(1);
   const [dados, setDados] = useState<Dados>(vazio);
   const [enviando, setEnviando] = useState(false);
+
+  useEffect(() => {
+    if (prefill) setDados((d) => ({ ...d, ...prefill }));
+  }, [prefill]);
 
   const set = (k: keyof Dados, v: string) => setDados((d) => ({ ...d, [k]: v }));
 
@@ -54,6 +66,7 @@ export const HeroForm = ({ caminho }: { caminho?: string }) => {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           ...dados,
+          ...extra,
           localizacao: "",
           caminho: caminho ?? "",
           timestamp: new Date().toISOString(),
@@ -92,14 +105,13 @@ export const HeroForm = ({ caminho }: { caminho?: string }) => {
         </div>
       )}
 
-      <AnimatePresence mode="wait">
+      <>
         {passo === 1 && (
           <motion.form
             key="p1"
             onSubmit={avancar}
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -30 }}
             transition={{ duration: 0.3 }}
             className="flex flex-col gap-4"
           >
@@ -144,7 +156,6 @@ export const HeroForm = ({ caminho }: { caminho?: string }) => {
             onSubmit={enviar}
             initial={{ opacity: 0, x: 30 }}
             animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: -30 }}
             transition={{ duration: 0.3 }}
             className="flex flex-col gap-4"
           >
@@ -213,7 +224,7 @@ export const HeroForm = ({ caminho }: { caminho?: string }) => {
             </p>
           </motion.div>
         )}
-      </AnimatePresence>
+      </>
 
       {passo < 3 && (
         <p className="mt-5 flex items-start gap-2 text-xs leading-relaxed text-ink">

@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { AnimatePresence, motion, useScroll, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { CAMINHOS, type CaminhoId } from "./caminhos";
 import { HERO_POSTER, HERO_VIDEO, Wave, scrollToId } from "./shared";
@@ -114,12 +114,11 @@ export const Hero = ({ caminho, onCaminho }: Props) => {
           transition={{ duration: 0.7, delay: 1.2, ease: [0.22, 1, 0.36, 1] }}
           className="overflow-hidden rounded-3xl bg-white text-deep shadow-[0_40px_80px_-30px_rgba(0,0,0,0.7)]"
         >
-          <AnimatePresence mode="wait">
+          <>
             <motion.div
               key={atual.id}
               initial={{ opacity: 0, x: 24 }}
               animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -24 }}
               transition={{ duration: 0.3 }}
               className="flex flex-col gap-8 p-6 sm:p-10 lg:flex-row lg:gap-12"
             >
@@ -146,7 +145,7 @@ export const Hero = ({ caminho, onCaminho }: Props) => {
                 </button>
               </dl>
             </motion.div>
-          </AnimatePresence>
+          </>
         </motion.div>
       </motion.div>
 
