@@ -3,12 +3,8 @@ import { Eyebrow, Reveal, track, whatsappLink, WhatsIcon } from "./shared";
 
 const perguntas = [
   {
-    p: "Não tenho o valor da entrada. Ainda assim dá?",
-    r: "Em muitos casos, sim. Consórcio e carta contemplada têm regras de entrada diferentes do financiamento tradicional. Na simulação mostramos as opções lado a lado para você ver qual exige menos no começo.",
-  },
-  {
     p: "Tenho medo de não conseguir pagar as parcelas.",
-    r: "Por isso a conversa começa pela parcela que cabe no seu mês, e não pelo valor do imóvel. O consultor monta o plano a partir da sua renda e mostra o custo total antes de qualquer assinatura.",
+    r: "Por isso que a conversa começa pela parcela que cabe no seu bolso, e não pelo valor do imóvel. O consultor monta o plano a partir da sua renda e mostra o custo total antes de qualquer assinatura.",
   },
   {
     p: "Minha renda é baixa. Vocês atendem meu perfil?",
