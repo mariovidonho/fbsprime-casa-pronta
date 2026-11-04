@@ -227,3 +227,18 @@ All colors MUST be HSL.
     background: #FFFFFF; border: 5px solid #519AC4;
   }
 }
+
+/* Convite para arrastar as barras do simulador: o botão pulsa até a primeira interação */
+@layer components {
+  .fbs-range--convite::-webkit-slider-thumb { animation: fbs-pulso 1.6s ease-out infinite; }
+  .fbs-range--convite::-moz-range-thumb { animation: fbs-pulso 1.6s ease-out infinite; }
+  @keyframes fbs-pulso {
+    0% { box-shadow: 0 4px 14px rgba(0,0,0,0.35), 0 0 0 0 rgba(142,194,224,0.75); }
+    70% { box-shadow: 0 4px 14px rgba(0,0,0,0.35), 0 0 0 14px rgba(142,194,224,0); }
+    100% { box-shadow: 0 4px 14px rgba(0,0,0,0.35), 0 0 0 0 rgba(142,194,224,0); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .fbs-range--convite::-webkit-slider-thumb { animation: none; }
+    .fbs-range--convite::-moz-range-thumb { animation: none; }
+  }
+}

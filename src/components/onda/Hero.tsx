@@ -2,7 +2,7 @@ import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { CAMINHOS, type CaminhoId } from "./caminhos";
-import { HERO_POSTER, HERO_VIDEO, Wave, scrollToId } from "./shared";
+import { HERO_POSTER, HERO_VIDEO, HERO_VIDEO_PEXELS, Wave, scrollToId } from "./shared";
 
 // Headline da proposta C. "|" quebra a linha; a última palavra fica em destaque.
 const titulo = ["Qual", "é", "o", "momento", "de", "comprar", "sua", "casa", "própria?", "|", "A", "gente", "mostra", "o", "caminho."];
@@ -24,15 +24,17 @@ export const Hero = ({ caminho, onCaminho }: Props) => {
       <motion.div style={{ scale: videoScale }} className="absolute inset-0 -z-20">
         <video
           className="h-full w-full object-cover"
-          src={HERO_VIDEO}
           poster={HERO_POSTER}
           autoPlay
           muted
           loop
           playsInline
-          preload="metadata"
+          preload="auto"
           aria-hidden="true"
-        />
+        >
+          <source src={HERO_VIDEO} type="video/mp4" />
+          <source src={HERO_VIDEO_PEXELS} type="video/mp4" />
+        </video>
       </motion.div>
       <div className="absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgba(0,51,78,0.82)_0%,rgba(0,51,78,0.9)_55%,rgba(0,51,78,0.97)_100%)]" />
 

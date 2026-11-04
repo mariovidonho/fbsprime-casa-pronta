@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { animate, motion } from "framer-motion";
-import { AlertTriangle, ArrowDown, Check, Info, Sparkles } from "lucide-react";
+import { AlertTriangle, ArrowDown, Check, Info, MoveHorizontal, Sparkles } from "lucide-react";
 import { HeroForm } from "./HeroForm";
 import { CAMINHOS, type CaminhoId } from "./caminhos";
 import { Eyebrow, Reveal, scrollToId, track } from "./shared";
@@ -40,6 +40,7 @@ const Slider = ({
   passo,
   onChange,
   dica,
+  convite = false,
 }: {
   id: string;
   label: string;
@@ -49,6 +50,8 @@ const Slider = ({
   passo: number;
   onChange: (v: number) => void;
   dica?: string;
+  /** Enquanto a pessoa não mexeu, o botão da barra pulsa para mostrar que dá para arrastar. */
+  convite?: boolean;
 }) => {
   const pct = ((valor - min) / (max - min)) * 100;
   return (
@@ -67,7 +70,7 @@ const Slider = ({
         step={passo}
         value={valor}
         onChange={(e) => onChange(Number(e.target.value))}
-        className="fbs-range"
+        className={`fbs-range ${convite ? "fbs-range--convite" : ""}`}
         style={{ "--pct": `${pct}%` } as React.CSSProperties}
       />
       {dica && <span className="text-xs text-[#9FC0D6]">{dica}</span>}
@@ -84,18 +87,19 @@ export const Simulador = ({ caminho }: { caminho: CaminhoId }) => {
   const [prazoAnos, setPrazoAnos] = useState(30);
 
   // Mede no GTM a primeira vez que a pessoa mexe no simulador
+  // e esconde o convite "arraste as barras" depois disso.
   const primeiroRender = useRef(true);
-  const jaMediu = useRef(false);
+  const [interagiu, setInteragiu] = useState(false);
   useEffect(() => {
     if (primeiroRender.current) {
       primeiroRender.current = false;
       return;
     }
-    if (!jaMediu.current) {
-      jaMediu.current = true;
+    if (!interagiu) {
+      setInteragiu(true);
       track("simulador_interacao");
     }
-  }, [imovel, entrada, renda, prazoAnos]);
+  }, [imovel, entrada, renda, prazoAnos, interagiu]);
 
   // a entrada nunca passa do valor do imóvel
   useEffect(() => {
@@ -165,9 +169,28 @@ export const Simulador = ({ caminho }: { caminho: CaminhoId }) => {
         </Reveal>
 
         <Reveal delay={0.1} className="mt-12 overflow-hidden rounded-[28px] bg-deep shadow-[0_40px_80px_-40px_rgba(0,51,78,0.8)]">
+          {/* Convite para arrastar (some depois da primeira interação) */}
+          <div
+            className={`flex justify-center px-6 transition-all duration-500 sm:px-10 ${
+              interagiu ? "max-h-0 opacity-0" : "max-h-24 pt-6 opacity-100 sm:pt-8"
+            }`}
+            aria-hidden={interagiu}
+          >
+            <span className="inline-flex items-center gap-3 rounded-full bg-sky-soft px-4 py-2 text-sm font-bold text-deep shadow-[0_8px_24px_-8px_rgba(142,194,224,0.8)]">
+              <motion.span
+                animate={{ x: [-5, 5, -5] }}
+                transition={{ duration: 1.4, repeat: Infinity, ease: "easeInOut" }}
+                className="flex"
+              >
+                <MoveHorizontal className="h-5 w-5" />
+              </motion.span>
+              Arraste as barras e veja o resultado mudar
+            </span>
+          </div>
+
           {/* Entradas */}
           <div className="grid gap-8 p-6 sm:p-10 md:grid-cols-3">
-            <Slider id="sim-imovel" label="Valor do imóvel" valor={imovel} min={100000} max={1500000} passo={5000} onChange={setImovel} />
+            <Slider id="sim-imovel" label="Valor do imóvel" valor={imovel} min={100000} max={1500000} passo={5000} onChange={setImovel} convite={!interagiu} />
             <Slider
               id="sim-entrada"
               label="Quanto você tem de entrada"
@@ -177,6 +200,7 @@ export const Simulador = ({ caminho }: { caminho: CaminhoId }) => {
               passo={1000}
               onChange={setEntrada}
               dica={`Os bancos costumam pedir 20%: ${brl(r.entradaMin)}`}
+              convite={!interagiu}
             />
             <Slider
               id="sim-renda"
@@ -187,6 +211,7 @@ export const Simulador = ({ caminho }: { caminho: CaminhoId }) => {
               passo={250}
               onChange={setRenda}
               dica={`Parcela máxima aceita (30%): ${brl(r.limite)}`}
+              convite={!interagiu}
             />
           </div>
           <div className="flex flex-wrap items-center gap-3 border-t border-white/10 px-6 py-4 sm:px-10">

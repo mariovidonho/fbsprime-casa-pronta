@@ -7,9 +7,9 @@ export const whatsappLink = (texto = "Olá! Gostaria de saber mais sobre a compr
   `https://wa.me/${WHATSAPP_COMERCIAL}?text=${encodeURIComponent(texto)}`;
 
 // Vídeo do hero (Pexels, licença livre: "A Realtor Giving Keys to a Couple", id 7646764).
-// Para produção, o ideal é hospedar o arquivo em /public/video/hero.mp4 e trocar aqui.
-export const HERO_VIDEO =
-  "https://videos.pexels.com/video-files/7646764/7646764-hd_1920_1080_25fps.mp4";
+// Hospedado no próprio site (public/video/hero.mp4, 720p); o Pexels fica como reserva.
+export const HERO_VIDEO_PEXELS =
+  "https://videos.pexels.com/video-files/7646764/7646764-hd_1280_720_25fps.mp4";
 /** Caminho de arquivos da pasta public, respeitando a base do build (permite publicar em subpastas). */
 export const asset = (p: string) => `${import.meta.env.BASE_URL}${p.replace(/^\//, "")}`;
 
@@ -17,6 +17,7 @@ export const asset = (p: string) => `${import.meta.env.BASE_URL}${p.replace(/^\/
 export const MODO_DEMO = import.meta.env.VITE_DEMO === "1";
 
 export const HERO_POSTER = asset("clientes/cliente-01.jpg");
+export const HERO_VIDEO = asset("video/hero.mp4");
 
 export const CLIENT_IMAGES = [
   "/clientes/cliente-01.jpg",
