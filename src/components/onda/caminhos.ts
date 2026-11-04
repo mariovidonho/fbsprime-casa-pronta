@@ -1,4 +1,4 @@
-export type CaminhoId = "entrada" | "planejar" | "agora" | "garantia";
+export type CaminhoId = "entrada" | "planejar" | "agora";
 
 export type Caminho = {
   id: CaminhoId;
@@ -15,9 +15,9 @@ export const CAMINHOS: Caminho[] = [
     id: "entrada",
     situacao: "Tenho pouca entrada",
     titulo: "Quero sair do aluguel",
-    produto: "Financiamento com entrada facilitada",
+    produto: "Parcelamento com entrada facilitada",
     texto:
-      "Financiamento com entrada facilitada. Projetamos o crédito nos bancos parceiros e buscamos o caminho com a menor entrada possível para a sua renda.",
+      "Parcelamento com entrada facilitada. Projetamos o crédito nas instituições financeiras parceiras e buscamos o melhor caminho com a menor entrada possível para a sua renda.",
     entrada: "Reduzida, conforme perfil",
     quando: "Após aprovação do banco",
   },
@@ -37,18 +37,8 @@ export const CAMINHOS: Caminho[] = [
     titulo: "Achei o imóvel e tenho pressa",
     produto: "Carta de crédito contemplada",
     texto:
-      "Carta de crédito contemplada: o crédito já está liberado, sem depender de sorteio ou lance. Você negocia o imóvel como compra à vista.",
+      "Planos personalizados para clientes que têm urgência em comprar seu imóvel com as menores taxas do mercado.",
     entrada: "Conforme a carta escolhida",
     quando: "Imediato",
-  },
-  {
-    id: "garantia",
-    situacao: "Já tenho um bem",
-    titulo: "Quero usar meu imóvel ou carro",
-    produto: "Crédito com garantia",
-    texto:
-      "Crédito com garantia: use um bem que você já tem para conseguir taxas menores e prazos maiores, para comprar, reformar ou reorganizar as dívidas.",
-    entrada: "Não se aplica",
-    quando: "Após análise da garantia",
   },
 ];

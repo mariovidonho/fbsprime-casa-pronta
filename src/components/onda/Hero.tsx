@@ -5,7 +5,7 @@ import { CAMINHOS, type CaminhoId } from "./caminhos";
 import { HERO_POSTER, HERO_VIDEO, Wave, scrollToId } from "./shared";
 
 // Headline da proposta C. "|" quebra a linha; a última palavra fica em destaque.
-const titulo = ["Qual", "é", "o", "seu", "momento?", "|", "A", "gente", "mostra", "o", "caminho."];
+const titulo = ["Qual", "é", "o", "momento", "de", "comprar", "sua", "casa", "própria?", "|", "A", "gente", "mostra", "o", "caminho."];
 const destaque = "caminho.";
 
 type Props = { caminho: CaminhoId; onCaminho: (c: CaminhoId) => void };
@@ -78,7 +78,7 @@ export const Hero = ({ caminho, onCaminho }: Props) => {
         </div>
 
         {/* As 4 situações */}
-        <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4" role="radiogroup" aria-label="Qual é o seu momento?">
+        <div className="grid grid-cols-1 gap-3 sm:grid-cols-3 sm:gap-4" role="radiogroup" aria-label="Qual é o momento de comprar sua casa própria?">
           {CAMINHOS.map((c, i) => {
             const ativo = c.id === caminho;
             return (
@@ -92,7 +92,7 @@ export const Hero = ({ caminho, onCaminho }: Props) => {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.9 + i * 0.08, ease: [0.22, 1, 0.36, 1] }}
                 whileHover={{ y: -4 }}
-                className={`flex min-h-[132px] flex-col justify-between gap-4 rounded-2xl border-2 p-4 text-left transition-colors duration-300 sm:min-h-[150px] sm:p-6 ${
+                className={`flex flex-col justify-between gap-2 rounded-2xl sm:gap-4 border-2 p-4 text-left transition-colors duration-300 sm:min-h-[150px] sm:p-6 ${
                   ativo
                     ? "border-white bg-white text-deep shadow-[0_24px_50px_-20px_rgba(0,0,0,0.6)]"
                     : "border-white/20 bg-white/[0.07] text-white backdrop-blur hover:border-white/50 hover:bg-white/[0.12]"
