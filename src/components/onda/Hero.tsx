@@ -4,7 +4,9 @@ import { Check, ChevronDown } from "lucide-react";
 import { HeroForm } from "./HeroForm";
 import { HERO_POSTER, HERO_VIDEO, Wave, scrollToId } from "./shared";
 
-const titulo = ["Sua", "casa", "própria", "começa", "com", "uma", "entrada", "que", "cabe."];
+// Headline da proposta C. "|" quebra a linha; a última palavra fica em destaque.
+const titulo = ["Qual", "é", "o", "seu", "momento?", "|", "A", "gente", "mostra", "o", "caminho."];
+const destaque = "caminho.";
 
 export const Hero = () => {
   const ref = useRef<HTMLElement>(null);
@@ -47,10 +49,13 @@ export const Hero = () => {
           </motion.span>
 
           <h1 className="font-serif text-[2.6rem] font-bold leading-[1.04] sm:text-6xl xl:text-7xl">
-            {titulo.map((p, i) => (
+            {titulo.map((p, i) =>
+              p === "|" ? (
+                <br key={i} />
+              ) : (
               <span key={i} className="inline-block overflow-hidden pb-1 align-bottom">
                 <motion.span
-                  className={`inline-block ${p === "cabe." ? "text-sky-soft" : ""}`}
+                  className={`inline-block ${p === destaque ? "text-sky-soft" : ""}`}
                   initial={{ y: "110%" }}
                   animate={{ y: 0 }}
                   transition={{ duration: 0.8, delay: 0.15 + i * 0.06, ease: [0.22, 1, 0.36, 1] }}
@@ -58,7 +63,8 @@ export const Hero = () => {
                   {p}&nbsp;
                 </motion.span>
               </span>
-            ))}
+              )
+            )}
           </h1>
 
           <motion.p
