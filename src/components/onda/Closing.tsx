@@ -7,13 +7,15 @@ export const CtaBand = () => (
   <section className="relative overflow-hidden bg-brand text-white">
     <div className="pointer-events-none absolute -left-20 top-0 h-full w-1/2 bg-[radial-gradient(circle_at_center,rgba(81,154,196,0.45),transparent_70%)]" />
     <div className="relative mx-auto flex max-w-6xl flex-col items-start gap-8 px-4 py-20 sm:px-6 sm:py-24 lg:flex-row lg:items-center lg:justify-between">
-      <Reveal className="flex max-w-2xl flex-col gap-4">
-        <h2 className="font-serif text-4xl font-bold leading-[1.1] sm:text-5xl">Já foi negado em outro lugar?</h2>
-        <p className="text-lg leading-relaxed text-[#E1EDF5]">
+      <Reveal className="flex max-w-2xl flex-col gap-4 lg:min-w-0 lg:max-w-none lg:flex-1">
+        <h2 className="text-balance font-serif text-4xl font-bold leading-[1.1] sm:text-5xl xl:whitespace-nowrap">
+          Já foi negado em outro lugar?
+        </h2>
+        <p className="max-w-2xl text-lg leading-relaxed text-[#E1EDF5]">
           Uma negativa no banco não fecha todas as portas. Converse com um consultor e veja outras opções.
         </p>
       </Reveal>
-      <Reveal delay={0.15} className="flex flex-wrap gap-3">
+      <Reveal delay={0.15} className="flex flex-wrap gap-3 lg:w-[300px] lg:shrink-0 lg:flex-col lg:[&>*]:justify-center [&>*]:whitespace-nowrap">
         <a
           href={whatsappLink("Olá! Já tive crédito negado e quero ver outras opções.")}
           target="_blank"
