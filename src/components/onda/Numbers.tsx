@@ -22,7 +22,7 @@ const Contador = ({ ate, prefixo = "", sufixo = "" }: { ate: number; prefixo?: s
 
 const numeros = [
   { ate: 500, prefixo: "+", sufixo: "", label: "famílias atendidas" },
-  { ate: 6, prefixo: "", sufixo: " anos", label: "de atuação em Jundiaí" },
+  { ate: 7, prefixo: "", sufixo: " anos", label: "de atuação em Jundiaí" },
   { ate: 4, prefixo: "", sufixo: "", label: "caminhos de crédito comparados" },
 ];
 

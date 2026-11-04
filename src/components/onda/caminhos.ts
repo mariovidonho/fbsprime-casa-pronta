@@ -35,10 +35,10 @@ export const CAMINHOS: Caminho[] = [
     id: "agora",
     situacao: "Preciso comprar já",
     titulo: "Achei o imóvel e tenho pressa",
-    produto: "Carta de crédito contemplada",
+    produto: "Planos personalizados",
     texto:
       "Planos personalizados para clientes que têm urgência em comprar seu imóvel com as menores taxas do mercado.",
-    entrada: "Conforme a carta escolhida",
+    entrada: "Conforme o seu plano",
     quando: "Imediato",
   },
 ];

@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { asset, scrollToId, track, whatsappLink, WhatsIcon } from "./shared";
 
@@ -10,11 +10,23 @@ const links = [
 ];
 
 export const Header = () => {
-  const [solid, setSolid] = useState(false);
+  const [flutuante, setFlutuante] = useState(false);
+  const [escondido, setEscondido] = useState(false);
   const [open, setOpen] = useState(false);
+  const ultimoY = useRef(0);
 
+  // No topo: barra transparente sobre o vídeo.
+  // Ao rolar: cápsula flutuante, que some ao descer e volta ao subir.
   useEffect(() => {
-    const onScroll = () => setSolid(window.scrollY > 40);
+    const onScroll = () => {
+      const y = window.scrollY;
+      setFlutuante(y > 40);
+      const delta = y - ultimoY.current;
+      if (Math.abs(delta) > 6) {
+        setEscondido(delta > 0 && y > 320);
+        ultimoY.current = y;
+      }
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -25,13 +37,22 @@ export const Header = () => {
     scrollToId(id);
   };
 
+  const ativo = flutuante || open;
+
   return (
     <header
-      className={`fixed inset-x-0 top-0 z-50 transition-all duration-300 ${
-        solid || open ? "bg-deep/95 shadow-[0_10px_30px_-12px_rgba(0,0,0,0.5)] backdrop-blur" : "bg-transparent"
+      className={`fixed inset-x-0 top-0 z-50 transition-all duration-500 ease-out ${ativo ? "px-3 pt-3 sm:px-6" : "px-0 pt-0"} ${
+        escondido && !open ? "-translate-y-[130%]" : "translate-y-0"
       }`}
     >
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-3 sm:px-6">
+      <div
+        className={`mx-auto transition-all duration-500 ease-out ${
+          ativo
+            ? "max-w-6xl rounded-2xl border border-white/10 bg-deep/85 shadow-[0_18px_40px_-18px_rgba(0,0,0,0.65)] backdrop-blur-md"
+            : "max-w-7xl border border-transparent bg-transparent"
+        }`}
+      >
+      <div className={`flex items-center justify-between gap-4 px-4 transition-all duration-500 sm:px-6 ${ativo ? "py-2.5" : "py-3"}`}>
         <button
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
           className="flex items-center gap-3 text-white"
@@ -97,6 +118,7 @@ export const Header = () => {
           ))}
         </nav>
       )}
+      </div>
     </header>
   );
 };

@@ -1,17 +1,18 @@
 import { useCallback, useEffect, useState } from "react";
 import { motion, type PanInfo } from "framer-motion";
-import { ChevronLeft, ChevronRight, Quote, Star } from "lucide-react";
+import { BadgeCheck, ChevronLeft, ChevronRight, Quote, Star } from "lucide-react";
 import { CLIENT_IMAGES, Eyebrow, Reveal, scrollToId } from "./shared";
 
 /**
- * DEPOIMENTOS DE EXEMPLO: mostram o tom e o formato que queremos.
- * Antes de publicar na main, troque pelos depoimentos reais (com autorização do cliente)
- * e mude DEPOIMENTOS_DE_EXEMPLO para false, o que remove a etiqueta "Depoimento de exemplo".
+ * DEPOIMENTOS
+ * ATENÇÃO: os três textos abaixo ainda são provisórios (escritos para mostrar o tom).
+ * Antes de publicar na main, troque cada um pelo depoimento real do cliente (com autorização)
+ * e marque `real: true`, o que mostra a etiqueta "Cliente real" naquele cartão.
  */
-const DEPOIMENTOS_DE_EXEMPLO = true;
 
 const depoimentos = [
   {
+    real: false,
     nome: "Ana Paula S.",
     profissao: "Professora",
     cidade: "Jundiaí - SP",
@@ -19,6 +20,7 @@ const depoimentos = [
       "Eu tinha vergonha até de perguntar. Achava que com o meu salário nem adiantava tentar. A consultora sentou comigo, fez a conta no papel e me mostrou que dava. Saí de lá com o crédito aprovado e chorei no carro.",
   },
   {
+    real: false,
     nome: "Carlos R.",
     profissao: "Autônomo",
     cidade: "Várzea Paulista - SP",
@@ -26,6 +28,7 @@ const depoimentos = [
       "Já tinha levado três nãos de banco e estava desistindo. Como autônomo, ninguém olhava minha renda direito. Aqui olharam. Demorou um pouco mais do que eu queria, mas me explicaram cada etapa e deu certo.",
   },
   {
+    real: false,
     nome: "Marina S.",
     profissao: "Enfermeira",
     cidade: "Cabreúva - SP",
@@ -170,9 +173,9 @@ export const Clients = () => {
                 <span className="text-[#B9D3E5]">
                   {d.profissao} · {d.cidade}
                 </span>
-                {DEPOIMENTOS_DE_EXEMPLO && (
-                  <span className="mt-2 inline-block rounded-full bg-white/10 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.1em] text-[#B9D3E5]">
-                    Depoimento de exemplo
+                {d.real && (
+                  <span className="mt-2 inline-flex items-center gap-1 rounded-full bg-sky-soft/15 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.1em] text-sky-soft">
+                    <BadgeCheck className="h-3 w-3" /> Cliente real
                   </span>
                 )}
               </figcaption>
