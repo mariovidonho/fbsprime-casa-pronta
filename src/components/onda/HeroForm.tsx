@@ -51,15 +51,16 @@ export const HeroForm = ({ caminho, prefill, extra }: Props) => {
     if (prefill) setDados((d) => ({ ...d, ...prefill }));
   }, [prefill]);
 
-  const mensagemWhats = [
-    `Olá! Sou ${dados.nome || "cliente"} e acabei de fazer uma simulação no site.`,
-    caminho ? `Caminho: ${caminho}` : "",
+  const condicoes = [
     dados.valorImovel ? `Valor do imóvel: ${dados.valorImovel}` : "",
-    dados.valorEntrada ? `Entrada disponível: ${dados.valorEntrada}` : "",
+    dados.valorEntrada ? `Entrada: ${dados.valorEntrada}` : "",
     dados.valorMensal ? `Parcela ideal: ${dados.valorMensal}` : "",
-  ]
-    .filter(Boolean)
-    .join("\n");
+  ].filter(Boolean);
+
+  const mensagemWhats = [
+    `Olá! Sou ${dados.nome || "cliente"} e gostaria de saber mais sobre a compra de imóveis em Jundiaí e região.`,
+    ...(condicoes.length ? ["", "Essas seriam as minhas condições:", ...condicoes] : []),
+  ].join("\n");
 
   const set = (k: keyof Dados, v: string) => setDados((d) => ({ ...d, [k]: v }));
 

@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 
 // Contatos e mídia num só lugar
 export const WHATSAPP_COMERCIAL = "5511940700447";
-export const whatsappLink = (texto = "Olá! Vim pelo site e quero fazer uma simulação.") =>
+export const whatsappLink = (texto = "Olá! Gostaria de saber mais sobre a compra de imóveis em Jundiaí e região.") =>
   `https://wa.me/${WHATSAPP_COMERCIAL}?text=${encodeURIComponent(texto)}`;
 
 // Vídeo do hero (Pexels, licença livre: "A Realtor Giving Keys to a Couple", id 7646764).

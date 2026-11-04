@@ -36,7 +36,7 @@ export const Faq = () => (
         <h2 className="font-serif text-4xl font-bold leading-[1.1] text-deep sm:text-5xl">Perguntas que todo mundo faz.</h2>
         <p className="text-lg leading-relaxed text-ink">Se a sua não estiver aqui, chame no WhatsApp. Uma pessoa responde.</p>
         <a
-          href={whatsappLink("Olá! Tenho uma dúvida sobre a simulação.")}
+          href={whatsappLink("Olá! Tenho uma dúvida sobre a compra de imóveis em Jundiaí e região.")}
           target="_blank"
           onClick={() => track("whatsapp_click", { local: "faq" })}
           rel="noopener noreferrer"
