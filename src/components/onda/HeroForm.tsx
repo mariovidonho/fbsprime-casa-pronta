@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowLeft, ArrowRight, Check, Loader2, Lock } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
-import { asset, MODO_DEMO } from "./shared";
+import { asset, MODO_DEMO, track, whatsappLink, WhatsIcon } from "./shared";
 
 const WEBHOOK = "https://hook.us2.make.com/6ajtjv40petejbmlxoedaludgbv027p5";
 
@@ -51,6 +51,16 @@ export const HeroForm = ({ caminho, prefill, extra }: Props) => {
     if (prefill) setDados((d) => ({ ...d, ...prefill }));
   }, [prefill]);
 
+  const mensagemWhats = [
+    `Olá! Sou ${dados.nome || "cliente"} e acabei de fazer uma simulação no site.`,
+    caminho ? `Caminho: ${caminho}` : "",
+    dados.valorImovel ? `Valor do imóvel: ${dados.valorImovel}` : "",
+    dados.valorEntrada ? `Entrada disponível: ${dados.valorEntrada}` : "",
+    dados.valorMensal ? `Parcela ideal: ${dados.valorMensal}` : "",
+  ]
+    .filter(Boolean)
+    .join("\n");
+
   const set = (k: keyof Dados, v: string) => setDados((d) => ({ ...d, [k]: v }));
 
   const avancar = (e: React.FormEvent) => {
@@ -82,7 +92,7 @@ export const HeroForm = ({ caminho, prefill, extra }: Props) => {
         }),
       });
       if (!r.ok) throw new Error("Erro no envio");
-      (window as unknown as { dataLayer?: unknown[] }).dataLayer?.push({ event: "lead_enviado" });
+      track("lead_enviado", { caminho: caminho ?? "" });
       setPasso(3);
     } catch {
       toast({
@@ -230,6 +240,16 @@ export const HeroForm = ({ caminho, prefill, extra }: Props) => {
             <p className="max-w-xs text-ink">
               Um consultor vai chamar você no WhatsApp em até 24 horas com as opções para o seu perfil.
             </p>
+            <a
+              href={whatsappLink(mensagemWhats)}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => track("whatsapp_click", { local: "pos_simulacao" })}
+              className="mt-2 inline-flex items-center gap-2 rounded-2xl bg-brand px-6 py-4 font-bold text-white transition hover:bg-deep"
+            >
+              <WhatsIcon /> Quero falar agora no WhatsApp
+            </a>
+            <span className="text-xs text-ink">A mensagem já vai com os dados da sua simulação.</span>
           </motion.div>
         )}
       </>

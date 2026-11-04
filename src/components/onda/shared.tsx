@@ -34,6 +34,16 @@ export const CLIENT_IMAGES = [
   "/clientes/cliente-13.jpg",
 ].map(asset);
 
+/**
+ * Envia um evento ao Google Tag Manager (dataLayer).
+ * Eventos: whatsapp_click {local}, simulador_interacao, simulador_enviar, lead_enviado.
+ */
+export const track = (event: string, params: Record<string, unknown> = {}) => {
+  const w = window as unknown as { dataLayer?: unknown[] };
+  w.dataLayer = w.dataLayer || [];
+  w.dataLayer.push({ event, ...params });
+};
+
 export const scrollToId = (id: string) =>
   document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
 

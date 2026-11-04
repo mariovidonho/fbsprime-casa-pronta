@@ -1,5 +1,5 @@
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
-import { Eyebrow, Reveal, whatsappLink, WhatsIcon } from "./shared";
+import { Eyebrow, Reveal, track, whatsappLink, WhatsIcon } from "./shared";
 
 const perguntas = [
   {
@@ -38,6 +38,7 @@ export const Faq = () => (
         <a
           href={whatsappLink("Olá! Tenho uma dúvida sobre a simulação.")}
           target="_blank"
+          onClick={() => track("whatsapp_click", { local: "faq" })}
           rel="noopener noreferrer"
           className="inline-flex items-center gap-2 self-start rounded-2xl border-2 border-deep px-5 py-3 font-bold text-deep transition hover:bg-deep hover:text-white"
         >

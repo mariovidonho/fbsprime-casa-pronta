@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowUp } from "lucide-react";
-import { asset, Reveal, Wave, scrollToId, whatsappLink, WhatsIcon } from "./shared";
+import { asset, Reveal, Wave, scrollToId, track, whatsappLink, WhatsIcon } from "./shared";
 
 export const CtaBand = () => (
   <section className="relative overflow-hidden bg-brand text-white">
@@ -17,6 +17,7 @@ export const CtaBand = () => (
         <a
           href={whatsappLink("Olá! Já tive crédito negado e quero ver outras opções.")}
           target="_blank"
+          onClick={() => track("whatsapp_click", { local: "faixa_negado" })}
           rel="noopener noreferrer"
           className="inline-flex items-center gap-2 rounded-2xl bg-white px-7 py-4 text-lg font-bold text-deep transition hover:scale-[1.03] hover:bg-sky-soft"
         >
@@ -46,7 +47,7 @@ export const SiteFooter = () => (
         </div>
         <div className="flex flex-col gap-2 text-[15px]">
           <strong className="mb-1 text-xs uppercase tracking-[0.2em] text-sky-soft">Fale com a gente</strong>
-          <a className="hover:underline" href={whatsappLink()} target="_blank" rel="noopener noreferrer">
+          <a className="hover:underline" href={whatsappLink()} target="_blank" rel="noopener noreferrer" onClick={() => track("whatsapp_click", { local: "rodape" })}>
             Comercial · (11) 94070-0447
           </a>
           <span>Pós-venda · (11) 91491-1179</span>
@@ -92,6 +93,7 @@ export const StickyActions = () => {
             key="wa"
             href={whatsappLink()}
             target="_blank"
+            onClick={() => track("whatsapp_click", { local: "botao_flutuante" })}
             rel="noopener noreferrer"
             aria-label="Falar no WhatsApp"
             initial={{ scale: 0, opacity: 0 }}
@@ -118,6 +120,7 @@ export const StickyActions = () => {
             <a
               href={whatsappLink()}
               target="_blank"
+              onClick={() => track("whatsapp_click", { local: "barra_celular" })}
               rel="noopener noreferrer"
               aria-label="Falar no WhatsApp"
               className="flex w-14 items-center justify-center rounded-xl bg-brand text-white"

@@ -3,27 +3,34 @@ import { motion, type PanInfo } from "framer-motion";
 import { ChevronLeft, ChevronRight, Quote, Star } from "lucide-react";
 import { CLIENT_IMAGES, Eyebrow, Reveal, scrollToId } from "./shared";
 
+/**
+ * DEPOIMENTOS DE EXEMPLO: mostram o tom e o formato que queremos.
+ * Antes de publicar na main, troque pelos depoimentos reais (com autorização do cliente)
+ * e mude DEPOIMENTOS_DE_EXEMPLO para false, o que remove a etiqueta "Depoimento de exemplo".
+ */
+const DEPOIMENTOS_DE_EXEMPLO = true;
+
 const depoimentos = [
   {
-    nome: "Ana Paula Silva",
+    nome: "Ana Paula S.",
     profissao: "Professora",
     cidade: "Jundiaí - SP",
     texto:
-      "Consegui minha casa própria com apenas 10% de entrada. O atendimento da FBS Prime foi excepcional, me explicaram tudo com clareza e paciência.",
+      "Eu tinha vergonha até de perguntar. Achava que com o meu salário nem adiantava tentar. A consultora sentou comigo, fez a conta no papel e me mostrou que dava. Saí de lá com o crédito aprovado e chorei no carro.",
   },
   {
-    nome: "Carlos Roberto",
-    profissao: "Empresário",
+    nome: "Carlos R.",
+    profissao: "Autônomo",
     cidade: "Várzea Paulista - SP",
     texto:
-      "Após 3 negativas em bancos, a FBS Prime encontrou uma solução perfeita para meu perfil. Achei a saída para o que eu precisava.",
+      "Já tinha levado três nãos de banco e estava desistindo. Como autônomo, ninguém olhava minha renda direito. Aqui olharam. Demorou um pouco mais do que eu queria, mas me explicaram cada etapa e deu certo.",
   },
   {
-    nome: "Marina Santos",
+    nome: "Marina S.",
     profissao: "Enfermeira",
     cidade: "Cabreúva - SP",
     texto:
-      "O processo foi muito mais rápido do que eu imaginava e o melhor, tudo muito bem esclarecido. Super recomendo a FBS Prime!",
+      "Trabalho de plantão e não tinha tempo de ficar indo em agência. Resolvi quase tudo pelo WhatsApp, sempre com a mesma pessoa me respondendo. Quando fui assinar, estava tudo pronto me esperando.",
   },
 ];
 
@@ -163,6 +170,11 @@ export const Clients = () => {
                 <span className="text-[#B9D3E5]">
                   {d.profissao} · {d.cidade}
                 </span>
+                {DEPOIMENTOS_DE_EXEMPLO && (
+                  <span className="mt-2 inline-block rounded-full bg-white/10 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.1em] text-[#B9D3E5]">
+                    Depoimento de exemplo
+                  </span>
+                )}
               </figcaption>
             </figure>
           </Reveal>

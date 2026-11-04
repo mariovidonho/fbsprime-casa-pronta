@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
-import { asset, scrollToId, whatsappLink, WhatsIcon } from "./shared";
+import { asset, scrollToId, track, whatsappLink, WhatsIcon } from "./shared";
 
 const links = [
   { id: "solucoes", label: "Soluções" },
@@ -62,6 +62,7 @@ export const Header = () => {
           <a
             href={whatsappLink()}
             target="_blank"
+            onClick={() => track("whatsapp_click", { local: "cabecalho" })}
             rel="noopener noreferrer"
             className="hidden items-center gap-2 rounded-2xl border border-white/30 px-4 py-2.5 text-sm font-semibold text-white transition hover:bg-white/10 sm:inline-flex"
           >

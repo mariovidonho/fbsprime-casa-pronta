@@ -3,7 +3,7 @@ import { animate, motion } from "framer-motion";
 import { AlertTriangle, ArrowDown, Check, Info, Sparkles } from "lucide-react";
 import { HeroForm } from "./HeroForm";
 import { CAMINHOS, type CaminhoId } from "./caminhos";
-import { Eyebrow, Reveal, scrollToId } from "./shared";
+import { Eyebrow, Reveal, scrollToId, track } from "./shared";
 import {
   BANCOS,
   CASOS_FBS,
@@ -82,6 +82,20 @@ export const Simulador = ({ caminho }: { caminho: CaminhoId }) => {
   const [entrada, setEntrada] = useState(30000);
   const [renda, setRenda] = useState(7000);
   const [prazoAnos, setPrazoAnos] = useState(30);
+
+  // Mede no GTM a primeira vez que a pessoa mexe no simulador
+  const primeiroRender = useRef(true);
+  const jaMediu = useRef(false);
+  useEffect(() => {
+    if (primeiroRender.current) {
+      primeiroRender.current = false;
+      return;
+    }
+    if (!jaMediu.current) {
+      jaMediu.current = true;
+      track("simulador_interacao");
+    }
+  }, [imovel, entrada, renda, prazoAnos]);
 
   // a entrada nunca passa do valor do imóvel
   useEffect(() => {
@@ -292,7 +306,10 @@ export const Simulador = ({ caminho }: { caminho: CaminhoId }) => {
               </figure>
 
               <button
-                onClick={() => scrollToId("simular-form")}
+                onClick={() => {
+                  track("simulador_enviar", { bancos_dentro_das_regras: r.aprovados });
+                  scrollToId("simular-form");
+                }}
                 className="group relative mt-6 inline-flex items-center justify-center gap-2 rounded-2xl bg-white px-6 py-4 text-base font-bold text-deep transition hover:bg-sky-soft"
               >
                 Enviar minha simulação para um consultor
