@@ -30,7 +30,7 @@ const faixa = ["Financiamento", "Consórcio imobiliário", "Carta contemplada", 
 
 export const Numbers = () => (
   <section id="numeros" className="bg-white">
-    <div className="mx-auto grid max-w-6xl gap-10 px-4 pb-20 pt-10 text-center sm:grid-cols-3 sm:px-6 sm:pb-24">
+    <div className="mx-auto grid max-w-6xl gap-10 border-t border-[#E3E8ED] px-4 pb-20 pt-16 text-center sm:grid-cols-3 sm:px-6 sm:pb-24">
       {numeros.map((n, i) => (
         <Reveal key={n.label} delay={i * 0.12} className="flex flex-col items-center gap-2">
           <span className="font-serif text-6xl font-bold text-brand sm:text-7xl">

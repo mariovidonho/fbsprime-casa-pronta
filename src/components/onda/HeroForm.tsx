@@ -32,7 +32,7 @@ const formatarMoeda = (v: string) => {
   return "R$ " + Number(d).toLocaleString("pt-BR");
 };
 
-export const HeroForm = () => {
+export const HeroForm = ({ caminho }: { caminho?: string }) => {
   const { toast } = useToast();
   const [passo, setPasso] = useState<1 | 2 | 3>(1);
   const [dados, setDados] = useState<Dados>(vazio);
@@ -55,6 +55,7 @@ export const HeroForm = () => {
         body: JSON.stringify({
           ...dados,
           localizacao: "",
+          caminho: caminho ?? "",
           timestamp: new Date().toISOString(),
           source: "Landing Page FBS Prime",
         }),
@@ -75,8 +76,7 @@ export const HeroForm = () => {
 
   return (
     <div
-      id="simular"
-      className="relative w-full scroll-mt-28 overflow-hidden rounded-3xl bg-white p-6 text-deep shadow-[0_40px_80px_-30px_rgba(0,0,0,0.7)] sm:p-8"
+      className="relative w-full overflow-hidden rounded-3xl bg-white p-6 text-deep shadow-[0_40px_80px_-30px_rgba(0,0,0,0.7)] sm:p-8"
     >
       {/* Barra de progresso */}
       {passo < 3 && (
@@ -106,6 +106,11 @@ export const HeroForm = () => {
             <div>
               <h2 className="font-serif text-3xl font-bold leading-tight">Simule agora</h2>
               <p className="mt-1 text-sm text-ink">Dois minutos. Sem compromisso.</p>
+              {caminho && (
+                <p className="mt-3 inline-flex rounded-full bg-paper px-3 py-1.5 text-xs font-semibold text-brand">
+                  Caminho escolhido: {caminho}
+                </p>
+              )}
             </div>
             <label className="flex flex-col gap-2 text-sm font-semibold">
               Nome
