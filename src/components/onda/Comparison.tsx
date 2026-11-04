@@ -5,7 +5,7 @@ import { Eyebrow, Reveal, scrollToId } from "./shared";
 const sozinho = [
   "Uma opção por vez, a do banco em que você entrou",
   "Entrada alta exigida logo de início",
-  "Atendimento padronizado e “robotizado”",
+  "Atendimento inflexível",
   "Você corre atrás da papelada",
 ];
 const comFbs = [

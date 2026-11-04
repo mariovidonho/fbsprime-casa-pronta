@@ -53,11 +53,10 @@ export const Clients = () => {
       <div className="relative mx-auto max-w-6xl px-4 pt-24 sm:px-6 sm:pt-32">
         <Reveal className="mx-auto flex max-w-3xl flex-col items-center gap-5 text-center">
           <Eyebrow dark>Clientes reais</Eyebrow>
-          <h2 className="font-serif text-4xl font-bold leading-[1.1] sm:text-5xl">Quem já pegou a chave com a gente</h2>
+          <h2 className="font-serif text-4xl font-bold leading-[1.1] sm:text-5xl">Você pode ser o próximo.</h2>
           <p className="text-lg leading-relaxed text-[#D3E3EE]">
             Professores, enfermeiras, autônomos, aposentados. Perfis diferentes, cada um com o seu caminho.
           </p>
-          <p className="font-serif text-2xl font-bold text-sky-soft sm:text-3xl">Você pode ser o próximo.</p>
           <button
             onClick={() => scrollToId("simular")}
             className="mt-1 rounded-2xl bg-white px-6 py-3.5 text-base font-bold text-deep transition hover:scale-[1.03] hover:bg-sky-soft"
