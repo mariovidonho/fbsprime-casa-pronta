@@ -242,3 +242,7 @@ All colors MUST be HSL.
     .fbs-range--convite::-moz-range-thumb { animation: none; }
   }
 }
+
+/* Trilho do carrossel de depoimentos: rola, mas sem barra visível */
+.fbs-trilho { scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+.fbs-trilho::-webkit-scrollbar { display: none; }

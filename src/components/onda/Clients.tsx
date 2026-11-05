@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import { motion, type PanInfo } from "framer-motion";
 import { BadgeCheck, ChevronLeft, ChevronRight, Quote, Star } from "lucide-react";
 import { CLIENT_IMAGES, Eyebrow, Reveal, scrollToId } from "./shared";
@@ -61,19 +61,24 @@ const depoimentos = [
 
 const n = CLIENT_IMAGES.length;
 
+/** Tempo que cada foto fica em destaque antes de passar sozinha. */
+const FOTOS_INTERVALO_MS = 3500;
+
 export const Clients = () => {
   const [ativo, setAtivo] = useState(0);
-  const [pausado, setPausado] = useState(false);
+  const [arrastando, setArrastando] = useState(false);
 
   const ir = useCallback((d: number) => setAtivo((a) => (a + d + n) % n), []);
 
+  // Passa sozinho sempre; qualquer troca (automática ou manual) reinicia o tempo.
   useEffect(() => {
-    if (pausado) return;
-    const t = setInterval(() => ir(1), 3500);
-    return () => clearInterval(t);
-  }, [pausado, ir]);
+    if (arrastando) return;
+    const t = setTimeout(() => ir(1), FOTOS_INTERVALO_MS);
+    return () => clearTimeout(t);
+  }, [ativo, arrastando, ir]);
 
   const aoSoltar = (_: unknown, info: PanInfo) => {
+    setArrastando(false);
     if (info.offset.x < -60 || info.velocity.x < -400) ir(1);
     else if (info.offset.x > 60 || info.velocity.x > 400) ir(-1);
   };
@@ -101,8 +106,6 @@ export const Clients = () => {
       {/* Carrossel em leque, arrastável */}
       <div
         className="relative mt-14 h-[440px] select-none sm:h-[520px]"
-        onMouseEnter={() => setPausado(true)}
-        onMouseLeave={() => setPausado(false)}
         role="region"
         aria-roledescription="carrossel"
         aria-label="Fotos de clientes da FBS Prime"
@@ -112,7 +115,7 @@ export const Clients = () => {
           drag="x"
           dragConstraints={{ left: 0, right: 0 }}
           dragElastic={0.2}
-          onDragStart={() => setPausado(true)}
+          onDragStart={() => setArrastando(true)}
           onDragEnd={aoSoltar}
           style={{ perspective: 1400 }}
         >
@@ -176,35 +179,118 @@ export const Clients = () => {
         ))}
       </div>
 
-      {/* Depoimentos */}
-      <div className="relative mx-auto grid max-w-6xl gap-6 px-4 pb-24 pt-20 sm:px-6 sm:pb-32 md:grid-cols-2 lg:grid-cols-3">
+      <Depoimentos />
+    </section>
+  );
+};
+
+/** Carrossel de depoimentos: arrastar/deslizar no celular, setas e pontos no desktop. */
+const Depoimentos = () => {
+  const trilho = useRef<HTMLDivElement>(null);
+  const [atual, setAtual] = useState(0);
+  const [porTela, setPorTela] = useState(1);
+
+  const medir = useCallback(() => {
+    const el = trilho.current;
+    const card = el?.firstElementChild as HTMLElement | null;
+    if (!el || !card) return;
+    const passo = card.offsetWidth + 24; // gap-6
+    setPorTela(Math.max(1, Math.round(el.clientWidth / passo)));
+    setAtual(Math.round(el.scrollLeft / passo));
+  }, []);
+
+  useEffect(() => {
+    medir();
+    window.addEventListener("resize", medir);
+    return () => window.removeEventListener("resize", medir);
+  }, [medir]);
+
+  const paginas = Math.max(1, depoimentos.length - porTela + 1);
+  const pagina = Math.min(atual, paginas - 1);
+
+  const irPara = (i: number) => {
+    const el = trilho.current;
+    const card = el?.firstElementChild as HTMLElement | null;
+    if (!el || !card) return;
+    const alvo = Math.max(0, Math.min(i, paginas - 1));
+    el.scrollTo({ left: alvo * (card.offsetWidth + 24), behavior: "smooth" });
+  };
+
+  return (
+    <div className="relative mx-auto max-w-6xl px-4 pb-24 pt-20 sm:px-6 sm:pb-32">
+      <Reveal className="mb-8 flex items-end justify-between gap-4">
+        <div>
+          <p className="font-serif text-2xl font-bold sm:text-3xl">O que dizem nossos clientes</p>
+          <p className="mt-1 text-sm text-[#B9D3E5]">Arraste para o lado para ler os próximos.</p>
+        </div>
+        <div className="hidden shrink-0 gap-2 sm:flex">
+          <button
+            onClick={() => irPara(pagina - 1)}
+            disabled={pagina === 0}
+            aria-label="Depoimento anterior"
+            className="flex h-11 w-11 items-center justify-center rounded-full border border-white/25 text-white transition hover:bg-white hover:text-deep disabled:pointer-events-none disabled:opacity-30"
+          >
+            <ChevronLeft className="h-5 w-5" />
+          </button>
+          <button
+            onClick={() => irPara(pagina + 1)}
+            disabled={pagina >= paginas - 1}
+            aria-label="Próximo depoimento"
+            className="flex h-11 w-11 items-center justify-center rounded-full border border-white/25 text-white transition hover:bg-white hover:text-deep disabled:pointer-events-none disabled:opacity-30"
+          >
+            <ChevronRight className="h-5 w-5" />
+          </button>
+        </div>
+      </Reveal>
+
+      <div
+        ref={trilho}
+        onScroll={medir}
+        role="region"
+        aria-roledescription="carrossel"
+        aria-label="Depoimentos de clientes"
+        className="fbs-trilho -mx-4 flex snap-x snap-mandatory gap-6 overflow-x-auto scroll-px-4 px-4 pb-2 sm:mx-0 sm:scroll-px-0 sm:px-0"
+      >
         {depoimentos.map((d, i) => (
-          <Reveal key={d.nome} delay={(i % 3) * 0.1}>
-            <figure className="flex h-full flex-col gap-5 rounded-3xl border border-white/10 bg-white/[0.06] p-7 backdrop-blur transition duration-300 hover:-translate-y-1 hover:bg-white/[0.1]">
-              <div className="flex items-center justify-between">
-                <div className="flex gap-1" aria-label="5 de 5 estrelas">
-                  {Array.from({ length: 5 }).map((_, k) => (
-                    <Star key={k} className="h-4 w-4 fill-sky-soft text-sky-soft" />
-                  ))}
-                </div>
-                <Quote className="h-7 w-7 text-sky/60" />
+          <figure
+            key={d.nome}
+            aria-label={`Depoimento ${i + 1} de ${depoimentos.length}`}
+            className="flex w-[85%] shrink-0 snap-start flex-col gap-5 rounded-3xl border border-white/10 bg-white/[0.06] p-7 backdrop-blur transition duration-300 hover:bg-white/[0.1] sm:w-[calc((100%-24px)/2)] lg:w-[calc((100%-48px)/3)]"
+          >
+            <div className="flex items-center justify-between">
+              <div className="flex gap-1" aria-label="5 de 5 estrelas">
+                {Array.from({ length: 5 }).map((_, k) => (
+                  <Star key={k} className="h-4 w-4 fill-sky-soft text-sky-soft" />
+                ))}
               </div>
-              <blockquote className="flex-1 font-serif text-lg leading-relaxed">“{d.texto}”</blockquote>
-              <figcaption className="text-sm">
-                <strong className="block text-base">{d.nome}</strong>
-                <span className="text-[#B9D3E5]">
-                  {d.profissao} · {d.cidade}
+              <Quote className="h-7 w-7 text-sky/60" />
+            </div>
+            <blockquote className="flex-1 font-serif text-lg leading-relaxed">“{d.texto}”</blockquote>
+            <figcaption className="text-sm">
+              <strong className="block text-base">{d.nome}</strong>
+              <span className="text-[#B9D3E5]">
+                {d.profissao} · {d.cidade}
+              </span>
+              {d.real && (
+                <span className="mt-2 flex w-fit items-center gap-1 rounded-full bg-sky-soft/15 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.1em] text-sky-soft">
+                  <BadgeCheck className="h-3 w-3" /> Cliente real
                 </span>
-                {d.real && (
-                  <span className="mt-2 inline-flex items-center gap-1 rounded-full bg-sky-soft/15 px-2 py-0.5 text-[10px] font-semibold uppercase tracking-[0.1em] text-sky-soft">
-                    <BadgeCheck className="h-3 w-3" /> Cliente real
-                  </span>
-                )}
-              </figcaption>
-            </figure>
-          </Reveal>
+              )}
+            </figcaption>
+          </figure>
         ))}
       </div>
-    </section>
+
+      <div className="mt-6 flex justify-center gap-2">
+        {Array.from({ length: paginas }).map((_, i) => (
+          <button
+            key={i}
+            onClick={() => irPara(i)}
+            aria-label={`Ir para o depoimento ${i + 1}`}
+            className={`h-2 rounded-full transition-all duration-300 ${i === pagina ? "w-8 bg-white" : "w-2 bg-white/35 hover:bg-white/60"}`}
+          />
+        ))}
+      </div>
+    </div>
   );
 };
