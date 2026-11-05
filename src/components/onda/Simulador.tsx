@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { animate, motion } from "framer-motion";
-import { AlertTriangle, ArrowDown, Check, Info, MoveHorizontal, Sparkles } from "lucide-react";
+import { AlertTriangle, ArrowDown, BadgeCheck, Check, ChevronLeft, ChevronRight, Info, MoveHorizontal, Sparkles } from "lucide-react";
 import { HeroForm } from "./HeroForm";
 import { CAMINHOS, type CaminhoId } from "./caminhos";
 import { Eyebrow, Reveal, scrollToId, track } from "./shared";
@@ -12,6 +12,9 @@ import {
   TAXAS_ATUALIZADAS_EM,
   TAXAS_FONTE,
   brl,
+  casoMaisProximo,
+  compararCaso,
+  pct,
   primeiraParcelaSAC,
 } from "./simuladorDados";
 
@@ -124,7 +127,13 @@ export const Simulador = ({ caminho }: { caminho: CaminhoId }) => {
     return { financiado, entradaMin, limite, bancos, melhor, faltaEntrada, pctRenda, aprovados };
   }, [imovel, entrada, renda, prazoAnos]);
 
-  const caso = CASOS_FBS[0];
+  // Proposta real mais parecida com o imóvel escolhido (as setas deixam ver as outras)
+  const [casoIdx, setCasoIdx] = useState(() => casoMaisProximo(300000));
+  useEffect(() => {
+    setCasoIdx(casoMaisProximo(imovel));
+  }, [imovel]);
+  const caso = CASOS_FBS[casoIdx];
+  const comp = compararCaso(caso);
 
   const prefill = useMemo(
     () => ({
@@ -308,26 +317,83 @@ export const Simulador = ({ caminho }: { caminho: CaminhoId }) => {
                 a parcela ou as duas. Cada cliente tem um caminho.
               </p>
 
-              {/* Caso */}
+              {/* Proposta real da FBS, a mais parecida com o valor escolhido */}
               <figure className="relative mt-6 rounded-2xl bg-white/10 p-5 backdrop-blur">
-                <figcaption className="text-[11px] font-bold uppercase tracking-[0.12em] text-sky-soft">
-                  {caso.ilustrativo ? "Exemplo ilustrativo" : "Baseado em cliente real"} · {caso.cidade}
-                </figcaption>
-                <dl className="mt-3 grid grid-cols-3 gap-2 text-center">
-                  <div>
-                    <dt className="text-[11px] text-[#C9DBE8]">Renda</dt>
-                    <dd className="text-sm font-bold">{brl(caso.rendaFamiliar)}</dd>
+                <div className="flex items-center justify-between gap-2">
+                  <figcaption className="inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-[0.12em] text-sky-soft">
+                    <BadgeCheck className="h-3.5 w-3.5" /> Proposta real FBS
+                  </figcaption>
+                  <div className="flex items-center gap-1">
+                    <button
+                      type="button"
+                      onClick={() => setCasoIdx((i) => (i - 1 + CASOS_FBS.length) % CASOS_FBS.length)}
+                      aria-label="Proposta anterior"
+                      className="flex h-7 w-7 items-center justify-center rounded-full bg-white/10 transition hover:bg-white/25"
+                    >
+                      <ChevronLeft className="h-4 w-4" />
+                    </button>
+                    <span className="min-w-[44px] text-center text-[11px] tabular-nums text-[#C9DBE8]">
+                      {casoIdx + 1} de {CASOS_FBS.length}
+                    </span>
+                    <button
+                      type="button"
+                      onClick={() => setCasoIdx((i) => (i + 1) % CASOS_FBS.length)}
+                      aria-label="Próxima proposta"
+                      className="flex h-7 w-7 items-center justify-center rounded-full bg-white/10 transition hover:bg-white/25"
+                    >
+                      <ChevronRight className="h-4 w-4" />
+                    </button>
                   </div>
+                </div>
+
+                <p className="mt-3 font-serif text-3xl font-bold leading-none text-white">
+                  {pct(comp.pctMenos, 0)} <span className="text-lg font-semibold">a menos de entrada</span>
+                </p>
+                <p className="mt-1 text-xs text-[#C9DBE8]">do que os {pct(comp.pctBanco, 0)} que os bancos costumam exigir</p>
+
+                {/* Barras: banco x FBS */}
+                <div className="mt-4 flex flex-col gap-2.5" aria-hidden="true">
+                  <div>
+                    <div className="mb-1 flex justify-between text-[11px] text-[#C9DBE8]">
+                      <span>Bancos ({pct(comp.pctBanco, 0)} do imóvel)</span>
+                      <span className="font-semibold text-white">{brl(comp.entradaBanco)}</span>
+                    </div>
+                    <div className="h-2.5 rounded-full bg-white/30" />
+                  </div>
+                  <div>
+                    <div className="mb-1 flex justify-between text-[11px] text-[#C9DBE8]">
+                      <span>Com a FBS ({pct(comp.pctFbs)} do imóvel)</span>
+                      <span className="font-semibold text-white">{brl(caso.entrada)}</span>
+                    </div>
+                    <div className="h-2.5 rounded-full bg-white/10">
+                      <motion.div
+                        key={casoIdx}
+                        className="h-full rounded-full bg-sky-soft"
+                        initial={{ width: "100%" }}
+                        animate={{ width: `${Math.max((caso.entrada / comp.entradaBanco) * 100, 3)}%` }}
+                        transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+                      />
+                    </div>
+                  </div>
+                </div>
+
+                <dl className="mt-4 grid grid-cols-3 gap-2 border-t border-white/15 pt-3 text-center">
                   <div>
                     <dt className="text-[11px] text-[#C9DBE8]">Imóvel</dt>
                     <dd className="text-sm font-bold">{brl(caso.valorImovel)}</dd>
                   </div>
                   <div>
                     <dt className="text-[11px] text-[#C9DBE8]">Entrada</dt>
-                    <dd className="text-sm font-bold">{brl(caso.entradaDisponivel)}</dd>
+                    <dd className="text-sm font-bold">{brl(caso.entrada)}</dd>
+                  </div>
+                  <div>
+                    <dt className="text-[11px] text-[#C9DBE8]">Parcela</dt>
+                    <dd className="text-sm font-bold">{brl(caso.parcela)}</dd>
                   </div>
                 </dl>
-                <p className="mt-3 text-sm leading-relaxed">{caso.resultado}</p>
+                <p className="mt-3 text-sm leading-relaxed">
+                  Uma economia de <strong>{brl(comp.economia)}</strong> na entrada em relação ao que os bancos pediriam.
+                </p>
               </figure>
 
               <button

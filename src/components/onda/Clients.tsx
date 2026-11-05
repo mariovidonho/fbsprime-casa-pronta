@@ -4,36 +4,58 @@ import { BadgeCheck, ChevronLeft, ChevronRight, Quote, Star } from "lucide-react
 import { CLIENT_IMAGES, Eyebrow, Reveal, scrollToId } from "./shared";
 
 /**
- * DEPOIMENTOS
- * ATENÇÃO: os três textos abaixo ainda são provisórios (escritos para mostrar o tom).
- * Antes de publicar na main, troque cada um pelo depoimento real do cliente (com autorização)
- * e marque `real: true`, o que mostra a etiqueta "Cliente real" naquele cartão.
+ * DEPOIMENTOS REAIS de clientes da FBS Prime (enviados pela FBS em 05/11/2026).
+ * `real: true` mostra a etiqueta "Cliente real" no cartão.
  */
 
 const depoimentos = [
   {
-    real: false,
-    nome: "Ana Paula S.",
-    profissao: "Professora",
-    cidade: "Jundiaí - SP",
+    real: true,
+    nome: "Edson Silva",
+    profissao: "Operador de Máquinas",
+    cidade: "Campo Limpo Paulista - SP",
     texto:
-      "Eu tinha vergonha até de perguntar. Achava que com o meu salário nem adiantava tentar. A consultora sentou comigo, fez a conta no papel e me mostrou que dava. Saí de lá com o crédito aprovado e chorei no carro.",
+      "Eu sempre achei que comprar uma casa era coisa de gente que ganhava muito bem. Nunca nem fui atrás porque tinha certeza de que não conseguiria. Um dia resolvi tentar, mais por curiosidade mesmo, e acabou sendo uma das melhores decisões que tomei. Hoje tenho a condição que há um ano achava impossível.",
   },
   {
-    real: false,
-    nome: "Carlos R.",
+    real: true,
+    nome: "Mariza Arruda",
+    profissao: "Autônoma",
+    cidade: "Itupeva - SP",
+    texto:
+      "O que mais cansava era pagar aluguel todo mês e saber que aquele dinheiro nunca seria nosso. A gente queria muito ter um cantinho próprio, principalmente por causa dos nossos filhos. Fomos atendidos com muita paciência e finalmente conseguimos enxergar um caminho para realizar esse sonho.",
+  },
+  {
+    real: true,
+    nome: "Lúcio Saldanha",
     profissao: "Autônomo",
     cidade: "Várzea Paulista - SP",
     texto:
-      "Já tinha levado três nãos de banco e estava desistindo. Como autônomo, ninguém olhava minha renda direito. Aqui olharam. Demorou um pouco mais do que eu queria, mas me explicaram cada etapa e deu certo.",
+      "Quem trabalha por conta própria sabe como é difícil comprovar renda. Tem mês que entra mais, tem mês que entra menos, e parece que os bancos não entendem muito bem essa realidade. Gostei porque não me trataram como apenas mais um número. Ouviram minha situação e me explicaram o que poderia ser feito.",
   },
   {
-    real: false,
-    nome: "Marina S.",
-    profissao: "Enfermeira",
-    cidade: "Cabreúva - SP",
+    real: true,
+    nome: "Janira Mariana",
+    profissao: "Fisioterapeuta",
+    cidade: "Vinhedo - SP",
     texto:
-      "Trabalho de plantão e não tinha tempo de ficar indo em agência. Resolvi quase tudo pelo WhatsApp, sempre com a mesma pessoa me respondendo. Quando fui assinar, estava tudo pronto me esperando.",
+      "Vou ser sincera, fiquei com bastante receio no começo. Hoje em dia a gente vê tanta coisa na internet que acaba desconfiando de tudo. Mas fui conversando, tirando minhas dúvidas e entendendo como funcionava. O que me deixou mais tranquila foi ter alguém disposto a explicar as coisas sem ficar me pressionando.",
+  },
+  {
+    real: true,
+    nome: "Célia de Nazaré",
+    profissao: "Supervisora de Estoque",
+    cidade: "Várzea Paulista - SP",
+    texto:
+      "Eu e meu marido já conversávamos sobre ter nossa casa há bastante tempo, mas sempre aparecia alguma coisa e acabávamos deixando para depois. Quando conhecemos a FBS, decidimos pelo menos entender as possibilidades. Foi muito bom perceber que talvez não precisássemos esperar tantos anos para começar a realizar esse sonho.",
+  },
+  {
+    real: true,
+    nome: "Ronaldo Fadel",
+    profissao: "Professor",
+    cidade: "Jundiaí - SP",
+    texto:
+      "Depois de algumas tentativas frustradas, eu já tinha colocado na cabeça que não conseguiria comprar minha casa. Nem queria mais tocar no assunto. Mas resolvi dar mais uma chance. Não foi tudo do dia para a noite, tive que entender algumas etapas, mas fui bem orientado durante o processo. Só quem já passou por isso sabe o quanto significa voltar a ter esperança.",
   },
 ];
 
@@ -155,9 +177,9 @@ export const Clients = () => {
       </div>
 
       {/* Depoimentos */}
-      <div className="relative mx-auto grid max-w-6xl gap-6 px-4 pb-24 pt-20 sm:px-6 sm:pb-32 md:grid-cols-3">
+      <div className="relative mx-auto grid max-w-6xl gap-6 px-4 pb-24 pt-20 sm:px-6 sm:pb-32 md:grid-cols-2 lg:grid-cols-3">
         {depoimentos.map((d, i) => (
-          <Reveal key={d.nome} delay={i * 0.1}>
+          <Reveal key={d.nome} delay={(i % 3) * 0.1}>
             <figure className="flex h-full flex-col gap-5 rounded-3xl border border-white/10 bg-white/[0.06] p-7 backdrop-blur transition duration-300 hover:-translate-y-1 hover:bg-white/[0.1]">
               <div className="flex items-center justify-between">
                 <div className="flex gap-1" aria-label="5 de 5 estrelas">
